@@ -1,6 +1,14 @@
-body {margin:0;padding:0;color:#333;font-size:12px;font-family:arial;background: url(../images/admin_bg.png) #FFF center -120px;;}
+body {margin:0;padding:0;color:#333;font-size:12px;font-family:arial;background: url(../images/admin_bg1.png) #FFF center -120px;;}
 html {margin:0;padding:0;border:0;}
-.panel {position:absolute;top:185px;left:50%;margin-left:-200px;width:400px;height:270px;}
+.panel {position: absolute;
+    top: 185px;
+    left: 50%;
+    margin-left: -200px;
+    width: 400px;
+    height: 270px;
+    background-color: white;
+    border-radius: 10px;
+    opacity: 0.9;}
 .panel .username {position:absolute;top:80px;left:32px;width:330px;height:30px;border:1px solid #CCC;background:#EEE;font-size:18px;padding-left:5px;}
 .panel .password {position:absolute;top:140px;left:32px;width:330px;height:30px;border:1px solid #CCC;background:#EEE;font-size:18px;padding-left:5px;}
 .panel .rememberme {position:absolute;bottom:50px;left:30px;}
