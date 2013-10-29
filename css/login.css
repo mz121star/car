@@ -1,4 +1,4 @@
-body {margin:0;padding:0;color:#333;font-size:12px;font-family:arial;background: url(../images/admin_bg1.png) #FFF center -120px;;}
+body {margin:0;padding:0;color:#333;font-size:12px;font-family:arial;background: url(../images/admin_bg2.png) #FFF center -120px;;}
 html {margin:0;padding:0;border:0;}
 .panel {position: absolute;
     top: 185px;
@@ -19,3 +19,8 @@ html {margin:0;padding:0;border:0;}
 .copyright {position:absolute;bottom:5px;width:100%;text-align:center;color:#FFF;}
 .copyright a {color:#FFF;text-decoration:none;}
 .copyright a:hover {}
+#car{background: url(../images/car1.png) ;width: 680px; height: 437px;position: absolute;top:-500px ; left: 1200px; }
+div { -moz-transition: all 0.5s ease-in;
+    -webkit-transition: all 0.5s ease-in;
+    -o-transition: all 0.5s ease-in;
+    transition: all 0.5s ease-in;}

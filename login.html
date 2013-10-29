@@ -8,6 +8,7 @@
 
 </head>
 <body>
+<div id="car"></div>
 <form action="login" method="post">
 	<div class="panel">
 
@@ -20,10 +21,19 @@
 	<div class="copyright">
 		<a href="#">Privacy Policy</a> | <a href="#">Sitemap</a> | <a href="#">Blog</a>
 		<br>
-&copy;2013 Pactera Group. All Rights Reserved.
+&copy;2013 Car Group. All Rights Reserved.
 <br>
-ReUnion and the stylized logo are among the trademarks and/or registered trademarks of Pactera Group in the United States and other countries.
+
 	</div>
 	
 </body>
+<script type="text/javascript" src="js/jquery/jquery-1.8.2.min.js"></script>
+<script type="text/javascript">
+    $(function(){
+        setTimeout(function(){
+            $("#car").css("top","100px").css("left","24%");
+        },10);
+    });
+
+</script>
 </html>
