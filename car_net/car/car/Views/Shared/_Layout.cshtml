@@ -1,7 +1,7 @@
 ﻿@{
     Layout = null;
 }
-
+@using car.DTO;
 <!DOCTYPE html>
 <html>
 <head>
@@ -61,17 +61,18 @@
 
                 <ul class="nav navbar-nav navbar-right">
 
-                    @if (Request.IsAuthenticated)
+                    @if (Session["user"] != null)
                     {
                         <text>
                             欢迎:
-                            <strong>@User.Identity.Name</strong>!
-                            [ @Html.ActionLink("注销", "LogOff", "Home") ]</text>
+                            <strong>@(((LoginUserDto)Session["user"]).EMPLOYEENAME)</strong>!
+                            [ @Html.ActionLink("注销", "LogOff", "Home") ]
+                        </text>
                     }
                     else
                     {
                         @:[ @Html.ActionLink("登录", "Login", "Home") ]
-                }
+                        }
                 </ul>
             </div><!--/.nav-collapse -->
         </div>

@@ -10,8 +10,8 @@ namespace car.Controllers
     public class HomeController : Controller
     {
         private Services services = new Services();
-        //[SessionUserParameter]
-        [Authorize]
+        [SessionUserParameter]
+        //[Authorize]
         public ActionResult Index()
         {
 
@@ -36,7 +36,8 @@ namespace car.Controllers
             if (user != null)
             {
                 Session["user"] = user;
-                FormsAuthentication.SetAuthCookie(user.EMPLOYEENAME, false);
+                //FormsAuthentication.SetAuthCookie(user.EMPLOYEENAME, false);
+
                 return RedirectToAction("Index", "Home");
             }
 
@@ -45,7 +46,8 @@ namespace car.Controllers
 
         public ActionResult LogOff()
         {
-            FormsAuthentication.SignOut();
+            //FormsAuthentication.SignOut();
+            Session["user"] = null;
             return View("Login");
         }
     }
