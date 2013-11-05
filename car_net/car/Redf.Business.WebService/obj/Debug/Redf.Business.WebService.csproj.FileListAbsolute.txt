@@ -6,3 +6,12 @@ E:\car\car_net\car\Redf.Business.WebService\bin\Newtonsoft.Json.Net20.xml
 E:\car\car_net\car\Redf.Business.WebService\obj\Debug\Redf.Business.WebService.csprojResolveAssemblyReference.cache
 E:\car\car_net\car\Redf.Business.WebService\obj\Debug\Redf.Business.WebService.dll
 E:\car\car_net\car\Redf.Business.WebService\obj\Debug\Redf.Business.WebService.pdb
+D:\Project\car\car\car_net\car\Redf.Business.WebService\bin\Redf.Business.WebService.dll.config
+D:\Project\car\car\car_net\car\Redf.Business.WebService\bin\Redf.Business.WebService.dll
+D:\Project\car\car\car_net\car\Redf.Business.WebService\bin\Redf.Business.WebService.pdb
+D:\Project\car\car\car_net\car\Redf.Business.WebService\bin\Newtonsoft.Json.Net20.dll
+D:\Project\car\car\car_net\car\Redf.Business.WebService\bin\Newtonsoft.Json.Net20.pdb
+D:\Project\car\car\car_net\car\Redf.Business.WebService\bin\Newtonsoft.Json.Net20.xml
+D:\Project\car\car\car_net\car\Redf.Business.WebService\obj\Debug\Redf.Business.WebService.csprojResolveAssemblyReference.cache
+D:\Project\car\car\car_net\car\Redf.Business.WebService\obj\Debug\Redf.Business.WebService.dll
+D:\Project\car\car\car_net\car\Redf.Business.WebService\obj\Debug\Redf.Business.WebService.pdb
