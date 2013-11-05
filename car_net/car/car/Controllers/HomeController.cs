@@ -1,4 +1,5 @@
-﻿using System;
+﻿using car.DTO;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -16,6 +17,33 @@ namespace car.Controllers
         {
 
             ViewBag.Message = "Welcome to ASP.NET MVC!";
+
+            Master master = new Master()
+            {
+                EMPLOYEEID = "1",
+                PLATE = "2",
+                SALESID = "3"
+            };
+
+            Detail detail = new Detail()
+            {
+                GOODSID = "4",
+                REMARKS = "5",
+                SUMNUMBER = "6"
+            };
+            IList<Master> listMaster = new List<Master>();
+            listMaster.Add(master);
+
+            IList<Detail> listDetail = new List<Detail>();
+            listDetail.Add(detail);
+
+            MasterDetail md = new MasterDetail()
+            {
+                MASTER = listMaster,
+                DETAIL = listDetail
+            };
+
+            services.UploadBillData(md);
 
             return View();
         }

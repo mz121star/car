@@ -15,4 +15,85 @@ namespace car.DTO
         public string EMPLOYEEID { get; set; }
         public string EMPLOYEENAME { get; set; }
     }
+
+    public class PlateList
+    {
+        public IList<Plate> RESULT { get; set; }
+    }
+
+    public class Plate
+    {
+        public string PLATE { get; set; }
+    }
+
+    public class FirstGoodsList
+    {
+        public IList<FirstGoods> RESULT { get; set; }
+
+    }
+
+
+    public class FirstGoods
+    {
+        public string GOODSCATEGORYID { get; set; }
+        public string GOODSCATEGORYNAME { get; set; }
+    }
+
+    public class SecondGoodsList
+    {
+        public IList<SecondGoods> RESULT { get; set; }
+
+    }
+
+    public class SecondGoods
+    {
+        public string GOODSTYPEID { get; set; }
+        public string GOODSTYPENAME { get; set; }
+    }
+
+    public class GoodsList
+    {
+        public IList<Goods> RESULT { get; set; }
+
+    }
+
+    public class Goods
+    {
+        public string GOODSID { get; set; }
+        public string GOODSNAME { get; set; }
+        public string SALEPRICE { get; set; }
+        public string IMAGEURL { get; set; }
+        public string REMARKS { get; set; }
+    }
+
+    public class MasterDetail
+    {
+        public IList<Master> MASTER { get; set; }
+        public IList<Detail> DETAIL { get; set; }
+    }
+
+    public class Master
+    {
+        public string SALESID { get; set; }
+        public string PLATE { get; set; }
+        public string EMPLOYEEID { get; set; }
+    }
+
+    public class Detail
+    {
+        public string GOODSID { get; set; }
+        public string SUMNUMBER { get; set; }
+        public string REMARKS { get; set; }
+    }
+
+    public class Message
+    {
+        public string ISSUCCESS { get; set; }
+        public string MESSAGE { get; set; }
+    }
+
+    public class MessageList
+    {
+        public IList<Message> MessageResult { get; set; }
+    }
 }

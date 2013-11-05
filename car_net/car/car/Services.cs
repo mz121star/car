@@ -12,11 +12,11 @@ namespace car
     {
 
         iPadService.iPadServiceSoapClient service = new iPadServiceSoapClient();
-        public  LoginUserDto Login(string username, string password)
+        public LoginUserDto Login(string username, string password)
         {
 
-           var a= service.Authentication(username, password);
-           var loginuser = JsonConvert.DeserializeObject<JSONLoginUserDto>(a);
+            var a = service.Authentication(username, password);
+            var loginuser = JsonConvert.DeserializeObject<JSONLoginUserDto>(a);
             if (loginuser.RESULT.Count > 0)
             {
                 return loginuser.RESULT[0];
@@ -25,8 +25,31 @@ namespace car
             {
                 return null;
             }
-            
+        }
 
+
+        public Message UploadBillData(MasterDetail masterDetail)
+        {
+            var message = service.UploadBillData(JsonConvert.SerializeObject(masterDetail));
+            return JsonConvert.DeserializeObject<MessageList>(message).MessageResult.FirstOrDefault();
+        }
+
+        public FirstGoodsList GetAllGoodsCategory()
+        {
+            var list = service.GetAllGoodsCategory();
+            return JsonConvert.DeserializeObject<FirstGoodsList>(list);
+        }
+
+        public SecondGoodsList GetGoodsTypeByCategoryID(string strCategoryID)
+        {
+            var list = service.GetGoodsTypeByCategoryID(strCategoryID);
+            return JsonConvert.DeserializeObject<SecondGoodsList>(list);
+        }
+
+        public GoodsList GetGoodsTypeByCategoryID(string strTypeID)
+        {
+            var list = service.GetGoodsByTypeID(strTypeID);
+            return JsonConvert.DeserializeObject<GoodsList>(list);
         }
     }
 }
