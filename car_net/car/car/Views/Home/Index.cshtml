@@ -24,14 +24,14 @@
                         <div class="panel-heading">
                             <h4 class="panel-title">
                                 <a data-toggle="collapse" data-toggle="collapse" data-parent="#accordion" href="#collapseOne@id">
-                                    <h3>@item.GOODSCATEGORYNAME</h3>
+                                    @item.GOODSCATEGORYNAME 
                                 </a>
                             </h4>
                         </div>
                     
                         <div id="collapseOne" class="panel-collapse collapse in">
                             <div class="panel-body">
-                                 
+                                <ul class="nav nav-pills nav-stacked"> 
                                 @foreach (var second in secondList.Where(x => x.FIRSTID == id))
                                 {<li>
                                     @Html.ActionLink(second.GOODSTYPENAME, "LoadGoods", new { typeId = second.GOODSTYPEID },
@@ -41,7 +41,7 @@
                                 </a>*@
                                     </li>
                                 }
-                                     
+                                 </ul>   
                             </div>
                         </div>
                         }
