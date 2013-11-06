@@ -46,7 +46,7 @@ namespace car
             return JsonConvert.DeserializeObject<SecondGoodsList>(list);
         }
 
-        public GoodsList GetGoodsTypeByCategoryID(string strTypeID)
+        public GoodsList GetGoodsByTypeID(string strTypeID)
         {
             var list = service.GetGoodsByTypeID(strTypeID);
             return JsonConvert.DeserializeObject<GoodsList>(list);
