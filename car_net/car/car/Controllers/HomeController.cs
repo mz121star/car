@@ -1,6 +1,8 @@
 ﻿using car.DTO;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Dynamic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -16,38 +18,30 @@ namespace car.Controllers
         public ActionResult Index()
         {
 
-            ViewBag.Message = "Welcome to ASP.NET MVC!";
+            var categoryList = services.GetAllGoodsCategory();
+            var typeList = new List<SecondGoods>();
 
-            Master master = new Master()
+            foreach (var item in categoryList.RESULT)
             {
-                EMPLOYEEID = "1",
-                PLATE = "2",
-                SALESID = "3"
-            };
+                var type = services.GetGoodsTypeByCategoryID(item.GOODSCATEGORYID);
+                type.RESULT.ToList().ForEach(x => x.FIRSTID = item.GOODSCATEGORYID);
+                typeList.AddRange(type.RESULT);
+            }
 
-            Detail detail = new Detail()
-            {
-                GOODSID = "4",
-                REMARKS = "5",
-                SUMNUMBER = "6"
-            };
-            IList<Master> listMaster = new List<Master>();
-            listMaster.Add(master);
+            dynamic tree = new ExpandoObject();
+            tree.FirstList = categoryList.RESULT;
+            tree.SecondList = typeList;
 
-            IList<Detail> listDetail = new List<Detail>();
-            listDetail.Add(detail);
-
-            MasterDetail md = new MasterDetail()
-            {
-                MASTER = listMaster,
-                DETAIL = listDetail
-            };
-
-            services.UploadBillData(md);
-
-            return View();
+            return View(tree);
         }
 
+        public ActionResult LoadGoods(string typeId)
+        {
+            var b = services.GetGoodsByTypeID(typeId).RESULT;
+            return Json(b);
+        }
+
+        [SessionUserParameter]
         public ActionResult Car()
         {
             return View();
@@ -57,21 +51,23 @@ namespace car.Controllers
             return View();
         }
         [HttpPost]
-        public RedirectToRouteResult LoginMethod(string name, string password)
+        public ActionResult LoginMethod(string name, string password)
         {
             var user = services.Login(name, password);
 
             if (user != null)
             {
                 Session["user"] = user;
-                //FormsAuthentication.SetAuthCookie(user.EMPLOYEENAME, false);
-
                 return RedirectToAction("Index", "Home");
             }
-
-            return RedirectToAction("Login", "Home");
+            else
+            {
+                Response.Write("<script>alert('用户名或者密码错误!');</script>");
+                return View("Login");
+            }
         }
 
+        [SessionUserParameter]
         public ActionResult LogOff()
         {
             //FormsAuthentication.SignOut();

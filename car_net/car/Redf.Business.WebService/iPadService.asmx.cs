@@ -28,10 +28,15 @@ namespace Redf.Business.WebService
         [WebMethod]
         public string Authentication(string strLoginName, string strPassword)
         {
+
             DataSet dsResult = new DataSet();
             dsResult.Tables.Add("RESULT");
             dsResult.Tables[0].Columns.Add("EMPLOYEEID");
             dsResult.Tables[0].Columns.Add("EMPLOYEENAME");
+            if (strLoginName != "admin" || strPassword != "admin")
+            {
+                return JsonConvert.SerializeObject(dsResult);
+            }
             dsResult.Tables[0].Rows.Add(new object[] { "TS_Ece6a1a5747a5cf40", "拓天软件" });
             return JsonConvert.SerializeObject(dsResult);
         }

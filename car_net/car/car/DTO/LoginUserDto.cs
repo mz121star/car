@@ -32,7 +32,6 @@ namespace car.DTO
 
     }
 
-
     public class FirstGoods
     {
         public string GOODSCATEGORYID { get; set; }
@@ -49,6 +48,8 @@ namespace car.DTO
     {
         public string GOODSTYPEID { get; set; }
         public string GOODSTYPENAME { get; set; }
+
+        public string FIRSTID { get; set; }
     }
 
     public class GoodsList
