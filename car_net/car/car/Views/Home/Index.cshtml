@@ -1,10 +1,16 @@
 ﻿<script>
-    $(function () {
-        $("#left").accordion();
-    });
+    //$(function () {
+    //    $("#left").accordion();
+    //});
 
     function LoadGoods(ele) {
         $(ele).closest("#left").find("a").removeClass("active"); $(ele).addClass("active");
+        var isAjax = $(ele).data('ajax');
+        if (isAjax) {
+            $.post($(ele).attr('href'), function (data) { $("#right").html(data) });
+            return false;
+        }
+        return true;
     }
 </script>
 @using car.DTO;
@@ -21,35 +27,38 @@
                         foreach (var item in firstList)
                         {
                             var id = item.GOODSCATEGORYID;
-                        <div class="panel-heading">
-                            <h4 class="panel-title">
-                                <a data-toggle="collapse" data-toggle="collapse" data-parent="#accordion" href="#collapseOne@id">
-                                    @item.GOODSCATEGORYNAME 
-                                </a>
-                            </h4>
-                        </div>
-                    
-                        <div id="collapseOne" class="panel-collapse collapse in">
-                            <div class="panel-body">
-                                <ul class="nav nav-pills nav-stacked"> 
-                                @foreach (var second in secondList.Where(x => x.FIRSTID == id))
-                                {<li>
-                                    @Html.ActionLink(second.GOODSTYPENAME, "LoadGoods", new { typeId = second.GOODSTYPEID },
-                                                     new { onclick = "LoadGoods(this);return false;", @class = "list", data_ajax = true })
-                                 @*<a href="#" data-ajax="true" class="list-group-item" onclick='LoadGoods("@second.GOODSTYPEID",this)'>
-                                    <h4 class="list-group-item-heading">@second.GOODSTYPENAME</h4>
-                                </a>*@
-                                    </li>
-                                }
-                                 </ul>   
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" data-toggle="collapse" data-parent="#accordion" href="#collapseOne@id">
+                                        @item.GOODSCATEGORYNAME
+                                    </a>
+                                </h4>
                             </div>
-                        </div>
+
+                            <div id="collapseOne" class="panel-collapse collapse in">
+                                <div class="panel-body">
+                                    <ul class="nav nav-pills nav-stacked">
+                                        @foreach (var second in secondList.Where(x => x.FIRSTID == id))
+                                        {
+                                            <li>
+                                                @Html.ActionLink(second.GOODSTYPENAME, "LoadGoods", new { typeId = second.GOODSTYPEID, viewType = Html.ViewContext.RouteData.Values["viewType"] },
+                                                     new { onclick = "LoadGoods(this);return false;", @class = "list", data_ajax = true })
+                                                @*<a href="#" data-ajax="true" class="list-group-item" onclick='LoadGoods("@second.GOODSTYPEID",this)'>
+                                                        <h4 class="list-group-item-heading">@second.GOODSTYPENAME</h4>
+                                                    </a>*@
+                                            </li>
+                                        }
+                                    </ul>
+                                </div>
+                            </div>
                         }
                     }
                 </div>
             </div>
         </div>
-        @Html.Partial("Partial\\_RightViewGrid", null)
+        <div id="right">
+            @Html.Partial("Partial\\_RightViewGrid", null)
+        </div>
     </div>
 
 </div>
