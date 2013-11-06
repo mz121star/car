@@ -15,7 +15,7 @@ namespace car.Controllers
         private Services services = new Services();
         [SessionUserParameter]
         //[Authorize]
-        public ActionResult Index()
+        public ActionResult Index(int? viewType)
         {
 
             var categoryList = services.GetAllGoodsCategory();
@@ -31,14 +31,18 @@ namespace car.Controllers
             dynamic tree = new ExpandoObject();
             tree.FirstList = categoryList.RESULT;
             tree.SecondList = typeList;
+            tree.ViewType = null;
 
             return View(tree);
         }
 
-        public ActionResult LoadGoods(string typeId)
+        public ActionResult LoadGoods(string typeId, int? viewType)
         {
+            dynamic tree = new ExpandoObject();
             var b = services.GetGoodsByTypeID(typeId).RESULT;
-            return Json(b);
+            tree.ViewType = viewType ?? 1;
+            tree.Goods = b;
+            return PartialView("Partial/_RightViewGrid", tree);
         }
 
         [SessionUserParameter]

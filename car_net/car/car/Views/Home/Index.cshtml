@@ -5,6 +5,12 @@
 
     function LoadGoods(ele) {
         $(ele).closest("#left").find("a").removeClass("active"); $(ele).addClass("active");
+        var isAjax = $(ele).data('ajax');
+        if (isAjax) {
+            $.post($(ele).attr('href'), function (data) { $("#right").html(data) });
+            return false;
+        }
+        return true;
     }
 </script>
 @using car.DTO;
@@ -23,8 +29,8 @@
                     <div class="list-group">
                         @foreach (var second in secondList.Where(x => x.FIRSTID == id))
                         {
-                            @Html.ActionLink(second.GOODSTYPENAME, "LoadGoods", new { typeId = second.GOODSTYPEID },
-                                                      new { onclick = "LoadGoods(this);return false;", @class = "list-group-item", data_ajax = true })
+                            @Html.ActionLink(second.GOODSTYPENAME, "LoadGoods", new { typeId = second.GOODSTYPEID, viewType = Html.ViewContext.RouteData.Values["viewType"] },
+                                                      new { onclick = "return LoadGoods(this);", @class = "list-group-item", data_ajax = true })
                             @*<a href="#" data-ajax="true" class="list-group-item" onclick='LoadGoods("@second.GOODSTYPEID",this)'>
                                     <h4 class="list-group-item-heading">@second.GOODSTYPENAME</h4>
                                 </a>*@
@@ -33,7 +39,8 @@
                 }
             }
         </div>
-        @Html.Partial("Partial\\_RightViewGrid", null)
-    </div>
+        <div id="right" class="col-xs-14 col-md-8">
+            @Html.Partial("Partial\\_RightViewGrid")
+        </div>
 
-</div>
+    </div>
