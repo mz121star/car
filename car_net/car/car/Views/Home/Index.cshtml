@@ -3,12 +3,12 @@
         $("#left").accordion();
     });
 
-    function LoadGoods(type) {
-        $.post('@Url.Action("LoadGoods")' + "?typeId =" + type, function (data) { alert(data); });
-        return false;
+    function LoadGoods(ele) {
+        $(ele).closest("#left").find("a").removeClass("active"); $(ele).addClass("active");
     }
 </script>
 @using car.DTO;
+@using System.Web.Mvc.Html;
 <div class="container">
 
     <div class="row">
@@ -23,9 +23,11 @@
                     <div class="list-group">
                         @foreach (var second in secondList.Where(x => x.FIRSTID == id))
                         {
-                            <a href="#" class="list-group-item " onclick='LoadGoods("@second.GOODSTYPEID")'>
-                                <h4 class="list-group-item-heading">@second.GOODSTYPENAME</h4>
-                            </a>
+                            @Html.ActionLink(second.GOODSTYPENAME, "LoadGoods", new { typeId = second.GOODSTYPEID },
+                                                      new { onclick = "LoadGoods(this);return false;", @class = "list-group-item", data_ajax = true })
+                            @*<a href="#" data-ajax="true" class="list-group-item" onclick='LoadGoods("@second.GOODSTYPEID",this)'>
+                                    <h4 class="list-group-item-heading">@second.GOODSTYPENAME</h4>
+                                </a>*@
                         }
                     </div>
                 }
