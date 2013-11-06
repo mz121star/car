@@ -5,12 +5,6 @@
 
     function LoadGoods(ele) {
         $(ele).closest("#left").find("a").removeClass("active"); $(ele).addClass("active");
-        var isAjax = $(ele).data('ajax');
-        if (isAjax) {
-            $.post($(ele).attr('href'), function (data) { $("#right").html(data) });
-            return false;
-        }
-        return true;
     }
 </script>
 @using car.DTO;
@@ -18,29 +12,44 @@
 <div class="container">
 
     <div class="row">
-        <div id="left" class="col-xs-4 col-md-4">
-            @{
-                var firstList = Model.FirstList;
-                var secondList = Model.SecondList as List<SecondGoods>;
-                foreach (var item in firstList)
-                {
-                    var id = item.GOODSCATEGORYID;
-                    <h3>@item.GOODSCATEGORYNAME</h3>
-                    <div class="list-group">
-                        @foreach (var second in secondList.Where(x => x.FIRSTID == id))
+        <div id="left" class="col-xs-0 col-md-4">
+            <div class="panel-group" id="accordion">
+                <div class="panel panel-default">
+                    @{
+                        var firstList = Model.FirstList;
+                        var secondList = Model.SecondList as List<SecondGoods>;
+                        foreach (var item in firstList)
                         {
-                            @Html.ActionLink(second.GOODSTYPENAME, "LoadGoods", new { typeId = second.GOODSTYPEID, viewType = Html.ViewContext.RouteData.Values["viewType"] },
-                                                      new { onclick = "return LoadGoods(this);", @class = "list-group-item", data_ajax = true })
-                            @*<a href="#" data-ajax="true" class="list-group-item" onclick='LoadGoods("@second.GOODSTYPEID",this)'>
+                            var id = item.GOODSCATEGORYID;
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a data-toggle="collapse" data-toggle="collapse" data-parent="#accordion" href="#collapseOne@id">
+                                    <h3>@item.GOODSCATEGORYNAME</h3>
+                                </a>
+                            </h4>
+                        </div>
+                    
+                        <div id="collapseOne" class="panel-collapse collapse in">
+                            <div class="panel-body">
+                                 
+                                @foreach (var second in secondList.Where(x => x.FIRSTID == id))
+                                {<li>
+                                    @Html.ActionLink(second.GOODSTYPENAME, "LoadGoods", new { typeId = second.GOODSTYPEID },
+                                                     new { onclick = "LoadGoods(this);return false;", @class = "list", data_ajax = true })
+                                 @*<a href="#" data-ajax="true" class="list-group-item" onclick='LoadGoods("@second.GOODSTYPEID",this)'>
                                     <h4 class="list-group-item-heading">@second.GOODSTYPENAME</h4>
                                 </a>*@
+                                    </li>
+                                }
+                                     
+                            </div>
+                        </div>
                         }
-                    </div>
-                }
-            }
+                    }
+                </div>
+            </div>
         </div>
-        <div id="right" class="col-xs-14 col-md-8">
-            @Html.Partial("Partial\\_RightViewGrid")
-        </div>
-
+        @Html.Partial("Partial\\_RightViewGrid", null)
     </div>
+
+</div>
