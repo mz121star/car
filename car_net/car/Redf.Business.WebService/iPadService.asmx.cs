@@ -89,9 +89,26 @@ namespace Redf.Business.WebService
             dsResult.Tables.Add("RESULT");
             dsResult.Tables[0].Columns.Add("GOODSTYPEID");
             dsResult.Tables[0].Columns.Add("GOODSTYPENAME");
-
-            dsResult.Tables[0].Rows.Add(new object[] { "TRI_6ca92e09985d2566", "香水" });
-            dsResult.Tables[0].Rows.Add(new object[] { "TRI_b4b6eb9bb6ebe56a", "防滑垫" });
+            if (strCategoryID == "TRI_74fb6869be042b80")
+            {
+                dsResult.Tables[0].Rows.Add(new object[] { "TRI_6ca92e09985d2566", "香水" });
+                dsResult.Tables[0].Rows.Add(new object[] { "TRI_b4b6eb9bb6ebe56a", "防滑垫" });
+            }
+            else if (strCategoryID == "TRI_60643b5f6dfb054e")
+            {
+                dsResult.Tables[0].Rows.Add(new object[] { "TRI_6ca92e09985d2013", "维修发动机" });
+                dsResult.Tables[0].Rows.Add(new object[] { "TRI_b4b6eb9bb6ebe59b", "维修变速箱" });
+            }
+            else if (strCategoryID == "TRI_2af1e3c5b174b960")
+            {
+                dsResult.Tables[0].Rows.Add(new object[] { "TRI_6ca92e09856d2013", "钣金" });
+                dsResult.Tables[0].Rows.Add(new object[] { "TRI_b4j5kb9bb6ebe56a", "喷漆" });
+            }
+            else if (strCategoryID == "TRI_f59c3cdea63eaaba")
+            {
+                dsResult.Tables[0].Rows.Add(new object[] { "TRI_6ca92e02356d2013", "贴膜" });
+                dsResult.Tables[0].Rows.Add(new object[] { "TRI_b4j5kb0nb6ebe56a", "发动机护板" });
+            }
             return JsonConvert.SerializeObject(dsResult);
         }
         /// <summary>
@@ -110,8 +127,47 @@ namespace Redf.Business.WebService
             dsResult.Tables[0].Columns.Add("IMAGEURL");
             dsResult.Tables[0].Columns.Add("REMARKS");
 
-            dsResult.Tables[0].Rows.Add(new object[] { "TRI_ac40c20f9e59ac18", "CD水", 980.00, "image01.jpg", "关于商品的描述" });
-            dsResult.Tables[0].Rows.Add(new object[] { "TRI_f1bd864e91f106e2", "香儿香水", 1200.00, "image02.jpg", "关于商品的描述" });
+            if (strTypeID == "TRI_6ca92e09985d2566")
+            {
+                dsResult.Tables[0].Rows.Add(new object[] { "TRI_ac40c20f9e59ac18", "CD水", 80.00, "image01.jpg", "关于商品的描述" });
+                dsResult.Tables[0].Rows.Add(new object[] { "TRI_f1bd864e91f106e2", "香儿香水", 300.00, "image02.jpg", "关于商品的描述" });
+            }
+            else if (strTypeID == "TRI_b4b6eb9bb6ebe56a")
+            {
+                dsResult.Tables[0].Rows.Add(new object[] { "TRI_ac40c30j9e59ac18", "防滑垫A", 198.00, "image01.jpg", "关于商品的描述" });
+                dsResult.Tables[0].Rows.Add(new object[] { "TRI_f1bd587e91f106e2", "防滑垫B", 120.00, "image02.jpg", "关于商品的描述" });
+            }
+            else if (strTypeID == "TRI_6ca92e09985d2013")
+            {
+                dsResult.Tables[0].Rows.Add(new object[] { "TRI_ac40c30j54g9ac18", "发动机大修", 980.00, "image01.jpg", "关于商品的描述" });
+                dsResult.Tables[0].Rows.Add(new object[] { "TRI_23fd587e91f106e2", "发动机保养", 1200.00, "image02.jpg", "关于商品的描述" });
+            }
+            else if (strTypeID == "TRI_b4b6eb9bb6ebe59b")
+            {
+                dsResult.Tables[0].Rows.Add(new object[] { "TRI_ac40c323fdg9ac18", "变速箱修理", 350.00, "image01.jpg", "关于商品的描述" });
+                dsResult.Tables[0].Rows.Add(new object[] { "TRI_23457dsa91f106e2", "换变速箱油", 3000.00, "image02.jpg", "关于商品的描述" });
+            }
+            else if (strTypeID == "TRI_6ca92e09856d2013")
+            {
+                dsResult.Tables[0].Rows.Add(new object[] { "TRI_ac40casfse59ac18", "钣金车门", 100.00, "image01.jpg", "关于商品的描述" });
+                dsResult.Tables[0].Rows.Add(new object[] { "TRI_f1bd58fd912306e2", "钣金保险杠", 490.00, "image02.jpg", "关于商品的描述" });
+            }
+            else if (strTypeID == "TRI_b4j5kb9bb6ebe56a")
+            {
+                dsResult.Tables[0].Rows.Add(new object[] { "TRI_ac40csa57eg9ac18", "穿大褂", 1000.00, "image01.jpg", "关于商品的描述" });
+                dsResult.Tables[0].Rows.Add(new object[] { "TRI_23fd587e91f106e2", "喷车顶", 700.00, "image02.jpg", "关于商品的描述" });
+            }
+            else if (strTypeID == "TRI_6ca92e02356d2013")
+            {
+                dsResult.Tables[0].Rows.Add(new object[] { "TRI_ac4iohf2454sac18", "贴全车膜", 4500.00, "image01.jpg", "关于商品的描述" });
+                dsResult.Tables[0].Rows.Add(new object[] { "TRI_23fst4safsa106e2", "贴前挡膜", 900.00, "image02.jpg", "关于商品的描述" });
+            }
+            else if (strTypeID == "TRI_b4j5kb0nb6ebe56a")
+            {
+                dsResult.Tables[0].Rows.Add(new object[] { "TRI_ac409823fd014c18", "钢护板", 350.00, "image01.jpg", "关于商品的描述" });
+                dsResult.Tables[0].Rows.Add(new object[] { "TRI_23457d454suy06e2", "铝合金护板", 550.00, "image02.jpg", "关于商品的描述" });
+            }
+
             return JsonConvert.SerializeObject(dsResult);
         }
         /// <summary>
