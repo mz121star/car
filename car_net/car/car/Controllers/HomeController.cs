@@ -1,4 +1,4 @@
-﻿using car.DTO;
+using car.DTO;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -58,7 +58,7 @@ namespace car.Controllers
         public ActionResult LoginMethod(string name, string password)
         {
             var user = services.Login(name, password);
-
+            Session["Plate"] = null;
             if (user != null)
             {
                 Session["user"] = user;
@@ -76,7 +76,20 @@ namespace car.Controllers
         {
             //FormsAuthentication.SignOut();
             Session["user"] = null;
+            Session["Plate"] = null;
             return View("Login");
+        }
+
+        [SessionUserParameter]
+        public JsonResult GetAllPlate()
+        {
+            return Json(services.GetAllPlate().RESULT, JsonRequestBehavior.AllowGet);
+        }
+
+        [SessionUserParameter]
+        public void SetPlate(string plate)
+        {
+            Session["Plate"] = plate;
         }
     }
 }
