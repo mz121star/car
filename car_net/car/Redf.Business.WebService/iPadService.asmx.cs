@@ -170,16 +170,71 @@ namespace Redf.Business.WebService
 
             return JsonConvert.SerializeObject(dsResult);
         }
+        ///// <summary>
+        ///// 保存账单信息
+        ///// 上传数据中账单主表包括：单据编码(SALESID)、车牌照号(PLATE)、接待人编码(EMPLOYEEID,就是当前登录人)
+        ///// 上传数据中账单从表包括：商品编码(GOODSID)、数量（SUMNUMBER）、备注（REMARKS）;
+        ///// 
+        ///// 返回结果：是否成功（ISSUCCESS：1表示成功、0表示失败）、详细信息（MESSAGE：用详细语言描述，包括：已经结账了等等）
+        ///// </summary>
+        ///// <returns></returns>
+        //[WebMethod]
+        //public string UploadBillData(string strBillData)
+        //{
+        //    //DataSet dsBill = new DataSet();
+        //    //dsBill.Tables.Add("MASTER");
+        //    //dsBill.Tables[0].Columns.Add("SALESID");
+        //    //dsBill.Tables[0].Columns.Add("PLATE");
+        //    //dsBill.Tables[0].Columns.Add("EMPLOYEEID");
+
+        //    //dsBill.Tables.Add("DETAIL");
+        //    //dsBill.Tables[1].Columns.Add("GOODSID");
+        //    //dsBill.Tables[1].Columns.Add("SUMNUMBER");
+        //    //dsBill.Tables[1].Columns.Add("REMARKS");
+
+        //    //dsBill.Tables[0].Rows.Add(new object[] { "E512E00F-CA44-6F7A-F9C6-10CCDDB92BB8", "辽B00001","00000000000000000000" });
+        //    //dsBill.Tables[1].Rows.Add(new object[] { "TRI_74fb6869be042b80", "1.00","无"});
+        //    //return JsonConvert.SerializeObject(dsBill);
+
+
+        //    //这里我可以解析Josn字符串，还原成DataSet然后进行处理，处理完成后返回结果
+        //    DataSet dsResult = new DataSet();
+        //    dsResult.Tables.Add("RESULT");
+        //    dsResult.Tables[0].Columns.Add("ISSUCCESS");
+        //    dsResult.Tables[0].Columns.Add("MESSAGE");
+        //    dsResult.Tables[0].Rows.Add(new object[] { "1", "保存成功" });
+        //    return JsonConvert.SerializeObject(dsResult);
+        //}
+        ///// <summary>
+        ///// 保存账单信息
+        ///// 上传数据中包括：单据编码(SALESID)
+        ///// 
+        ///// 返回结果：是否成功（ISSUCCESS：1表示成功、0表示失败）、详细信息（MESSAGE：用详细语言描述，包括：已经结账了等等）
+        ///// </summary>
+        ///// <returns></returns>
+        //[WebMethod]
+        //public string DeleteBillData(string strBillID)
+        //{
+        //    //这里我可以通过主单编码去删除账单，处理完成后返回结果
+        //    DataSet dsResult = new DataSet();
+        //    dsResult.Tables.Add("RESULT");
+        //    dsResult.Tables[0].Columns.Add("ISSUCCESS");
+        //    dsResult.Tables[0].Columns.Add("MESSAGE");
+        //    dsResult.Tables[0].Rows.Add(new object[] { "1", "保存成功" });
+        //    return JsonConvert.SerializeObject(dsResult);
+        //}
+
         /// <summary>
-        /// 保存账单信息
-        /// 上传数据中账单主表包括：单据编码(SALESID)、车牌照号(PLATE)、接待人编码(EMPLOYEEID,就是当前登录人)
-        /// 上传数据中账单从表包括：商品编码(GOODSID)、数量（SUMNUMBER）、备注（REMARKS）;
+        /// 增加新单
+        /// 参数Json字符串：单据编码(SALESID)、车牌照号(PLATE)、接待人编码(EMPLOYEEID,就是当前登录人)
+        /// 返回Json字符串：是否成功（ISSUCCESS：1表示成功、0表示失败）、详细信息（MESSAGE：用详细语言描述，包括：不存在此车牌号等等）
         /// 
-        /// 返回结果：是否成功（ISSUCCESS：1表示成功、0表示失败）、详细信息（MESSAGE：用详细语言描述，包括：已经结账了等等）
+        /// 参数示例字符串：{"MASTER":[{"SALESID":"E512E00F-CA44-6F7A-F9C6-10CCDDB92BB8","PLATE":"辽B00001","EMPLOYEEID":"00000000000000000000"}]}
+        /// 返回示例字符串：{"RESULT":[{"ISSUCCESS":"1","MESSAGE":"保存成功"}]}
         /// </summary>
         /// <returns></returns>
         [WebMethod]
-        public string UploadBillData(string strBillData)
+        public string NewBill(string strBillData)
         {
             //DataSet dsBill = new DataSet();
             //dsBill.Tables.Add("MASTER");
@@ -192,8 +247,8 @@ namespace Redf.Business.WebService
             //dsBill.Tables[1].Columns.Add("SUMNUMBER");
             //dsBill.Tables[1].Columns.Add("REMARKS");
 
-            //dsBill.Tables[0].Rows.Add(new object[] { "E512E00F-CA44-6F7A-F9C6-10CCDDB92BB8", "辽B00001","00000000000000000000" });
-            //dsBill.Tables[1].Rows.Add(new object[] { "TRI_74fb6869be042b80", "1.00","无"});
+            //dsBill.Tables[0].Rows.Add(new object[] { "E512E00F-CA44-6F7A-F9C6-10CCDDB92BB8", "辽B00001", "00000000000000000000" });
+            //dsBill.Tables[1].Rows.Add(new object[] { "TRI_74fb6869be042b80", "1.00", "无" });
             //return JsonConvert.SerializeObject(dsBill);
 
 
@@ -205,17 +260,121 @@ namespace Redf.Business.WebService
             dsResult.Tables[0].Rows.Add(new object[] { "1", "保存成功" });
             return JsonConvert.SerializeObject(dsResult);
         }
+
         /// <summary>
-        /// 保存账单信息
-        /// 上传数据中包括：单据编码(SALESID)
+        /// 删除账单
+        /// 一个字符串参数：单据编码(SALESID)
+        /// 返回Json字符串：是否成功（ISSUCCESS：1表示成功、0表示失败）、详细信息（MESSAGE：用详细语言描述，包括：已经结账了等等）
         /// 
-        /// 返回结果：是否成功（ISSUCCESS：1表示成功、0表示失败）、详细信息（MESSAGE：用详细语言描述，包括：已经结账了等等）
+        /// 参数示例字符串：E512E00F-CA44-6F7A-F9C6-10CCDDB92BB8
+        /// 返回示例字符串：{"RESULT":[{"ISSUCCESS":"1","MESSAGE":"保存成功"}]}
         /// </summary>
         /// <returns></returns>
         [WebMethod]
-        public string DeleteBillData(string strBillID)
+        public string DeleteBill(string strSalesID)
         {
-            //这里我可以通过主单编码去删除账单，处理完成后返回结果
+            DataSet dsResult = new DataSet();
+            dsResult.Tables.Add("RESULT");
+            dsResult.Tables[0].Columns.Add("ISSUCCESS");
+            dsResult.Tables[0].Columns.Add("MESSAGE");
+            dsResult.Tables[0].Rows.Add(new object[] { "1", "保存成功" });
+            return JsonConvert.SerializeObject(dsResult);
+        }
+
+        /// <summary>
+        /// 提交账单（结账）
+        /// 一个字符串参数：单据编码(SALESID)
+        /// 返回Json字符串：是否成功（ISSUCCESS：1表示成功、0表示失败）、详细信息（MESSAGE：用详细语言描述，包括：已经结账了等等）
+        /// 
+        /// 参数示例字符串：E512E00F-CA44-6F7A-F9C6-10CCDDB92BB8
+        /// 返回示例字符串：{"RESULT":[{"ISSUCCESS":"1","MESSAGE":"保存成功"}]}
+        /// </summary>
+        /// <returns></returns>
+        [WebMethod]
+        public string ClosingBill(string strSalesID)
+        {
+            DataSet dsResult = new DataSet();
+            dsResult.Tables.Add("RESULT");
+            dsResult.Tables[0].Columns.Add("ISSUCCESS");
+            dsResult.Tables[0].Columns.Add("MESSAGE");
+            dsResult.Tables[0].Rows.Add(new object[] { "1", "保存成功" });
+            return JsonConvert.SerializeObject(dsResult);
+        }
+
+        /// <summary>
+        /// 获取账单明细
+        /// 一个字符串参数：单据编码
+        /// 返回Json字符串：商品编码(GOODSID)、数量（SUMNUMBER）、备注（REMARKS）;
+        /// 
+        /// 参数示例字符串：E512E00F-CA44-6F7A-F9C6-10CCDDB92BB8
+        /// 返回示例字符串：{"DETAIL":[{"GOODSID":"TRI_74fb6869be042b80","SUMNUMBER":"1.00","REMARKS":"无"}]}
+        /// 备注：如果返回数据为空说明当前车牌照对应单据已结账，或还没有新增商品
+        /// </summary>
+        /// <returns></returns>
+        [WebMethod]
+        public string DownloadBill(string strSalesID)
+        {
+            DataSet dsBill = new DataSet();
+            dsBill.Tables.Add("DETAIL");
+            dsBill.Tables[0].Columns.Add("GOODSID");
+            dsBill.Tables[0].Columns.Add("SUMNUMBER");
+            dsBill.Tables[0].Columns.Add("REMARKS");
+            dsBill.Tables[0].Rows.Add(new object[] { "TRI_74fb6869be042b80", "1.00", "无" });
+            return JsonConvert.SerializeObject(dsBill);
+        }
+
+        /// <summary>
+        /// 增加商品
+        /// 参数Json字符串：单据编码(SALESID)、商品编码(GOODSID)、数量（SUMNUMBER）、备注（REMARKS）;
+        /// 返回Json字符串：返回结果：是否成功（ISSUCCESS：1表示成功、0表示失败）、详细信息（MESSAGE：用详细语言描述，包括：已经结账了等等）
+        /// 
+        /// 参数示例字符串：{"DETAIL":[{"SALESID":"E512E00F-CA44-6F7A-F9C6-10CCDDB92BB8","GOODSID":"TRI_74fb6869be042b80","SUMNUMBER":"1.00","REMARKS":"无"}]}
+        /// 返回示例字符串：{"RESULT":[{"ISSUCCESS":"1","MESSAGE":"保存成功"}]}
+        /// 备注：如果返回数据为空说明当前车牌照对应单据已结账，或还没有新增商品
+        /// </summary>
+        /// <returns></returns>
+        [WebMethod]
+        public string AddGoods(string strSalesID)
+        {
+            //DataSet dsBill = new DataSet();
+            //dsBill.Tables.Add("DETAIL");
+            //dsBill.Tables[0].Columns.Add("SALESID");
+            //dsBill.Tables[0].Columns.Add("GOODSID");
+            //dsBill.Tables[0].Columns.Add("SUMNUMBER");
+            //dsBill.Tables[0].Columns.Add("REMARKS");
+            //dsBill.Tables[0].Rows.Add(new object[] { "E512E00F-CA44-6F7A-F9C6-10CCDDB92BB8","TRI_74fb6869be042b80", "1.00", "无" });
+            //return JsonConvert.SerializeObject(dsBill);
+
+            DataSet dsResult = new DataSet();
+            dsResult.Tables.Add("RESULT");
+            dsResult.Tables[0].Columns.Add("ISSUCCESS");
+            dsResult.Tables[0].Columns.Add("MESSAGE");
+            dsResult.Tables[0].Rows.Add(new object[] { "1", "保存成功" });
+            return JsonConvert.SerializeObject(dsResult);
+        }
+
+        /// <summary>
+        /// 删除商品
+        /// 两个字符串参数：单据编码(SALESID)、商品编码(GOODSID)
+        /// 返回Json字符串：返回结果：是否成功（ISSUCCESS：1表示成功、0表示失败）、详细信息（MESSAGE：用详细语言描述，包括：已经结账了等等）
+        /// 
+        /// 参数示例字符串：E512E00F-CA44-6F7A-F9C6-10CCDDB92BB8,TRI_74fb6869be042b80
+        /// 返回示例字符串：{"RESULT":[{"ISSUCCESS":"1","MESSAGE":"保存成功"}]}
+        /// 备注：如果返回数据为空说明当前车牌照对应单据已结账，或还没有新增商品
+        /// </summary>
+        /// <returns></returns>
+        [WebMethod]
+        public string DeleteGoods(string strSalesID, string strGoodsID)
+        {
+            //DataSet dsBill = new DataSet();
+            //dsBill.Tables.Add("DETAIL");
+            //dsBill.Tables[0].Columns.Add("SALESID");
+            //dsBill.Tables[0].Columns.Add("GOODSID");
+            //dsBill.Tables[0].Columns.Add("SUMNUMBER");
+            //dsBill.Tables[0].Columns.Add("REMARKS");
+            //dsBill.Tables[0].Rows.Add(new object[] { "E512E00F-CA44-6F7A-F9C6-10CCDDB92BB8","TRI_74fb6869be042b80", "1.00", "无" });
+            //return JsonConvert.SerializeObject(dsBill);
+
             DataSet dsResult = new DataSet();
             dsResult.Tables.Add("RESULT");
             dsResult.Tables[0].Columns.Add("ISSUCCESS");

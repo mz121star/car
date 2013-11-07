@@ -36,12 +36,28 @@ namespace car.iPadService {
         car.iPadService.GetGoodsByTypeIDResponse GetGoodsByTypeID(car.iPadService.GetGoodsByTypeIDRequest request);
         
         // CODEGEN: 命名空间 http://tempuri.org/ 的元素名称 strBillData 以后生成的消息协定未标记为 nillable
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/UploadBillData", ReplyAction="*")]
-        car.iPadService.UploadBillDataResponse UploadBillData(car.iPadService.UploadBillDataRequest request);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/NewBill", ReplyAction="*")]
+        car.iPadService.NewBillResponse NewBill(car.iPadService.NewBillRequest request);
         
-        // CODEGEN: 命名空间 http://tempuri.org/ 的元素名称 strBillID 以后生成的消息协定未标记为 nillable
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/DeleteBillData", ReplyAction="*")]
-        car.iPadService.DeleteBillDataResponse DeleteBillData(car.iPadService.DeleteBillDataRequest request);
+        // CODEGEN: 命名空间 http://tempuri.org/ 的元素名称 strSalesID 以后生成的消息协定未标记为 nillable
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/DeleteBill", ReplyAction="*")]
+        car.iPadService.DeleteBillResponse DeleteBill(car.iPadService.DeleteBillRequest request);
+        
+        // CODEGEN: 命名空间 http://tempuri.org/ 的元素名称 strSalesID 以后生成的消息协定未标记为 nillable
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ClosingBill", ReplyAction="*")]
+        car.iPadService.ClosingBillResponse ClosingBill(car.iPadService.ClosingBillRequest request);
+        
+        // CODEGEN: 命名空间 http://tempuri.org/ 的元素名称 strSalesID 以后生成的消息协定未标记为 nillable
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/DownloadBill", ReplyAction="*")]
+        car.iPadService.DownloadBillResponse DownloadBill(car.iPadService.DownloadBillRequest request);
+        
+        // CODEGEN: 命名空间 http://tempuri.org/ 的元素名称 strSalesID 以后生成的消息协定未标记为 nillable
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/AddGoods", ReplyAction="*")]
+        car.iPadService.AddGoodsResponse AddGoods(car.iPadService.AddGoodsRequest request);
+        
+        // CODEGEN: 命名空间 http://tempuri.org/ 的元素名称 strSalesID 以后生成的消息协定未标记为 nillable
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/DeleteGoods", ReplyAction="*")]
+        car.iPadService.DeleteGoodsResponse DeleteGoods(car.iPadService.DeleteGoodsRequest request);
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -378,15 +394,15 @@ namespace car.iPadService {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
-    public partial class UploadBillDataRequest {
+    public partial class NewBillRequest {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="UploadBillData", Namespace="http://tempuri.org/", Order=0)]
-        public car.iPadService.UploadBillDataRequestBody Body;
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="NewBill", Namespace="http://tempuri.org/", Order=0)]
+        public car.iPadService.NewBillRequestBody Body;
         
-        public UploadBillDataRequest() {
+        public NewBillRequest() {
         }
         
-        public UploadBillDataRequest(car.iPadService.UploadBillDataRequestBody Body) {
+        public NewBillRequest(car.iPadService.NewBillRequestBody Body) {
             this.Body = Body;
         }
     }
@@ -395,15 +411,15 @@ namespace car.iPadService {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
-    public partial class UploadBillDataRequestBody {
+    public partial class NewBillRequestBody {
         
         [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
         public string strBillData;
         
-        public UploadBillDataRequestBody() {
+        public NewBillRequestBody() {
         }
         
-        public UploadBillDataRequestBody(string strBillData) {
+        public NewBillRequestBody(string strBillData) {
             this.strBillData = strBillData;
         }
     }
@@ -412,15 +428,15 @@ namespace car.iPadService {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
-    public partial class UploadBillDataResponse {
+    public partial class NewBillResponse {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="UploadBillDataResponse", Namespace="http://tempuri.org/", Order=0)]
-        public car.iPadService.UploadBillDataResponseBody Body;
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="NewBillResponse", Namespace="http://tempuri.org/", Order=0)]
+        public car.iPadService.NewBillResponseBody Body;
         
-        public UploadBillDataResponse() {
+        public NewBillResponse() {
         }
         
-        public UploadBillDataResponse(car.iPadService.UploadBillDataResponseBody Body) {
+        public NewBillResponse(car.iPadService.NewBillResponseBody Body) {
             this.Body = Body;
         }
     }
@@ -429,16 +445,16 @@ namespace car.iPadService {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
-    public partial class UploadBillDataResponseBody {
+    public partial class NewBillResponseBody {
         
         [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
-        public string UploadBillDataResult;
+        public string NewBillResult;
         
-        public UploadBillDataResponseBody() {
+        public NewBillResponseBody() {
         }
         
-        public UploadBillDataResponseBody(string UploadBillDataResult) {
-            this.UploadBillDataResult = UploadBillDataResult;
+        public NewBillResponseBody(string NewBillResult) {
+            this.NewBillResult = NewBillResult;
         }
     }
     
@@ -446,15 +462,15 @@ namespace car.iPadService {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
-    public partial class DeleteBillDataRequest {
+    public partial class DeleteBillRequest {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="DeleteBillData", Namespace="http://tempuri.org/", Order=0)]
-        public car.iPadService.DeleteBillDataRequestBody Body;
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="DeleteBill", Namespace="http://tempuri.org/", Order=0)]
+        public car.iPadService.DeleteBillRequestBody Body;
         
-        public DeleteBillDataRequest() {
+        public DeleteBillRequest() {
         }
         
-        public DeleteBillDataRequest(car.iPadService.DeleteBillDataRequestBody Body) {
+        public DeleteBillRequest(car.iPadService.DeleteBillRequestBody Body) {
             this.Body = Body;
         }
     }
@@ -463,16 +479,16 @@ namespace car.iPadService {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
-    public partial class DeleteBillDataRequestBody {
+    public partial class DeleteBillRequestBody {
         
         [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
-        public string strBillID;
+        public string strSalesID;
         
-        public DeleteBillDataRequestBody() {
+        public DeleteBillRequestBody() {
         }
         
-        public DeleteBillDataRequestBody(string strBillID) {
-            this.strBillID = strBillID;
+        public DeleteBillRequestBody(string strSalesID) {
+            this.strSalesID = strSalesID;
         }
     }
     
@@ -480,15 +496,15 @@ namespace car.iPadService {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
-    public partial class DeleteBillDataResponse {
+    public partial class DeleteBillResponse {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="DeleteBillDataResponse", Namespace="http://tempuri.org/", Order=0)]
-        public car.iPadService.DeleteBillDataResponseBody Body;
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="DeleteBillResponse", Namespace="http://tempuri.org/", Order=0)]
+        public car.iPadService.DeleteBillResponseBody Body;
         
-        public DeleteBillDataResponse() {
+        public DeleteBillResponse() {
         }
         
-        public DeleteBillDataResponse(car.iPadService.DeleteBillDataResponseBody Body) {
+        public DeleteBillResponse(car.iPadService.DeleteBillResponseBody Body) {
             this.Body = Body;
         }
     }
@@ -497,16 +513,292 @@ namespace car.iPadService {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
-    public partial class DeleteBillDataResponseBody {
+    public partial class DeleteBillResponseBody {
         
         [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
-        public string DeleteBillDataResult;
+        public string DeleteBillResult;
         
-        public DeleteBillDataResponseBody() {
+        public DeleteBillResponseBody() {
         }
         
-        public DeleteBillDataResponseBody(string DeleteBillDataResult) {
-            this.DeleteBillDataResult = DeleteBillDataResult;
+        public DeleteBillResponseBody(string DeleteBillResult) {
+            this.DeleteBillResult = DeleteBillResult;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class ClosingBillRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="ClosingBill", Namespace="http://tempuri.org/", Order=0)]
+        public car.iPadService.ClosingBillRequestBody Body;
+        
+        public ClosingBillRequest() {
+        }
+        
+        public ClosingBillRequest(car.iPadService.ClosingBillRequestBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class ClosingBillRequestBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public string strSalesID;
+        
+        public ClosingBillRequestBody() {
+        }
+        
+        public ClosingBillRequestBody(string strSalesID) {
+            this.strSalesID = strSalesID;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class ClosingBillResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="ClosingBillResponse", Namespace="http://tempuri.org/", Order=0)]
+        public car.iPadService.ClosingBillResponseBody Body;
+        
+        public ClosingBillResponse() {
+        }
+        
+        public ClosingBillResponse(car.iPadService.ClosingBillResponseBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class ClosingBillResponseBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public string ClosingBillResult;
+        
+        public ClosingBillResponseBody() {
+        }
+        
+        public ClosingBillResponseBody(string ClosingBillResult) {
+            this.ClosingBillResult = ClosingBillResult;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class DownloadBillRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="DownloadBill", Namespace="http://tempuri.org/", Order=0)]
+        public car.iPadService.DownloadBillRequestBody Body;
+        
+        public DownloadBillRequest() {
+        }
+        
+        public DownloadBillRequest(car.iPadService.DownloadBillRequestBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class DownloadBillRequestBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public string strSalesID;
+        
+        public DownloadBillRequestBody() {
+        }
+        
+        public DownloadBillRequestBody(string strSalesID) {
+            this.strSalesID = strSalesID;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class DownloadBillResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="DownloadBillResponse", Namespace="http://tempuri.org/", Order=0)]
+        public car.iPadService.DownloadBillResponseBody Body;
+        
+        public DownloadBillResponse() {
+        }
+        
+        public DownloadBillResponse(car.iPadService.DownloadBillResponseBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class DownloadBillResponseBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public string DownloadBillResult;
+        
+        public DownloadBillResponseBody() {
+        }
+        
+        public DownloadBillResponseBody(string DownloadBillResult) {
+            this.DownloadBillResult = DownloadBillResult;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class AddGoodsRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="AddGoods", Namespace="http://tempuri.org/", Order=0)]
+        public car.iPadService.AddGoodsRequestBody Body;
+        
+        public AddGoodsRequest() {
+        }
+        
+        public AddGoodsRequest(car.iPadService.AddGoodsRequestBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class AddGoodsRequestBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public string strSalesID;
+        
+        public AddGoodsRequestBody() {
+        }
+        
+        public AddGoodsRequestBody(string strSalesID) {
+            this.strSalesID = strSalesID;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class AddGoodsResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="AddGoodsResponse", Namespace="http://tempuri.org/", Order=0)]
+        public car.iPadService.AddGoodsResponseBody Body;
+        
+        public AddGoodsResponse() {
+        }
+        
+        public AddGoodsResponse(car.iPadService.AddGoodsResponseBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class AddGoodsResponseBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public string AddGoodsResult;
+        
+        public AddGoodsResponseBody() {
+        }
+        
+        public AddGoodsResponseBody(string AddGoodsResult) {
+            this.AddGoodsResult = AddGoodsResult;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class DeleteGoodsRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="DeleteGoods", Namespace="http://tempuri.org/", Order=0)]
+        public car.iPadService.DeleteGoodsRequestBody Body;
+        
+        public DeleteGoodsRequest() {
+        }
+        
+        public DeleteGoodsRequest(car.iPadService.DeleteGoodsRequestBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class DeleteGoodsRequestBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public string strSalesID;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=1)]
+        public string strGoodsID;
+        
+        public DeleteGoodsRequestBody() {
+        }
+        
+        public DeleteGoodsRequestBody(string strSalesID, string strGoodsID) {
+            this.strSalesID = strSalesID;
+            this.strGoodsID = strGoodsID;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class DeleteGoodsResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="DeleteGoodsResponse", Namespace="http://tempuri.org/", Order=0)]
+        public car.iPadService.DeleteGoodsResponseBody Body;
+        
+        public DeleteGoodsResponse() {
+        }
+        
+        public DeleteGoodsResponse(car.iPadService.DeleteGoodsResponseBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class DeleteGoodsResponseBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public string DeleteGoodsResult;
+        
+        public DeleteGoodsResponseBody() {
+        }
+        
+        public DeleteGoodsResponseBody(string DeleteGoodsResult) {
+            this.DeleteGoodsResult = DeleteGoodsResult;
         }
     }
     
@@ -602,29 +894,82 @@ namespace car.iPadService {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        car.iPadService.UploadBillDataResponse car.iPadService.iPadServiceSoap.UploadBillData(car.iPadService.UploadBillDataRequest request) {
-            return base.Channel.UploadBillData(request);
+        car.iPadService.NewBillResponse car.iPadService.iPadServiceSoap.NewBill(car.iPadService.NewBillRequest request) {
+            return base.Channel.NewBill(request);
         }
         
-        public string UploadBillData(string strBillData) {
-            car.iPadService.UploadBillDataRequest inValue = new car.iPadService.UploadBillDataRequest();
-            inValue.Body = new car.iPadService.UploadBillDataRequestBody();
+        public string NewBill(string strBillData) {
+            car.iPadService.NewBillRequest inValue = new car.iPadService.NewBillRequest();
+            inValue.Body = new car.iPadService.NewBillRequestBody();
             inValue.Body.strBillData = strBillData;
-            car.iPadService.UploadBillDataResponse retVal = ((car.iPadService.iPadServiceSoap)(this)).UploadBillData(inValue);
-            return retVal.Body.UploadBillDataResult;
+            car.iPadService.NewBillResponse retVal = ((car.iPadService.iPadServiceSoap)(this)).NewBill(inValue);
+            return retVal.Body.NewBillResult;
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        car.iPadService.DeleteBillDataResponse car.iPadService.iPadServiceSoap.DeleteBillData(car.iPadService.DeleteBillDataRequest request) {
-            return base.Channel.DeleteBillData(request);
+        car.iPadService.DeleteBillResponse car.iPadService.iPadServiceSoap.DeleteBill(car.iPadService.DeleteBillRequest request) {
+            return base.Channel.DeleteBill(request);
         }
         
-        public string DeleteBillData(string strBillID) {
-            car.iPadService.DeleteBillDataRequest inValue = new car.iPadService.DeleteBillDataRequest();
-            inValue.Body = new car.iPadService.DeleteBillDataRequestBody();
-            inValue.Body.strBillID = strBillID;
-            car.iPadService.DeleteBillDataResponse retVal = ((car.iPadService.iPadServiceSoap)(this)).DeleteBillData(inValue);
-            return retVal.Body.DeleteBillDataResult;
+        public string DeleteBill(string strSalesID) {
+            car.iPadService.DeleteBillRequest inValue = new car.iPadService.DeleteBillRequest();
+            inValue.Body = new car.iPadService.DeleteBillRequestBody();
+            inValue.Body.strSalesID = strSalesID;
+            car.iPadService.DeleteBillResponse retVal = ((car.iPadService.iPadServiceSoap)(this)).DeleteBill(inValue);
+            return retVal.Body.DeleteBillResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        car.iPadService.ClosingBillResponse car.iPadService.iPadServiceSoap.ClosingBill(car.iPadService.ClosingBillRequest request) {
+            return base.Channel.ClosingBill(request);
+        }
+        
+        public string ClosingBill(string strSalesID) {
+            car.iPadService.ClosingBillRequest inValue = new car.iPadService.ClosingBillRequest();
+            inValue.Body = new car.iPadService.ClosingBillRequestBody();
+            inValue.Body.strSalesID = strSalesID;
+            car.iPadService.ClosingBillResponse retVal = ((car.iPadService.iPadServiceSoap)(this)).ClosingBill(inValue);
+            return retVal.Body.ClosingBillResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        car.iPadService.DownloadBillResponse car.iPadService.iPadServiceSoap.DownloadBill(car.iPadService.DownloadBillRequest request) {
+            return base.Channel.DownloadBill(request);
+        }
+        
+        public string DownloadBill(string strSalesID) {
+            car.iPadService.DownloadBillRequest inValue = new car.iPadService.DownloadBillRequest();
+            inValue.Body = new car.iPadService.DownloadBillRequestBody();
+            inValue.Body.strSalesID = strSalesID;
+            car.iPadService.DownloadBillResponse retVal = ((car.iPadService.iPadServiceSoap)(this)).DownloadBill(inValue);
+            return retVal.Body.DownloadBillResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        car.iPadService.AddGoodsResponse car.iPadService.iPadServiceSoap.AddGoods(car.iPadService.AddGoodsRequest request) {
+            return base.Channel.AddGoods(request);
+        }
+        
+        public string AddGoods(string strSalesID) {
+            car.iPadService.AddGoodsRequest inValue = new car.iPadService.AddGoodsRequest();
+            inValue.Body = new car.iPadService.AddGoodsRequestBody();
+            inValue.Body.strSalesID = strSalesID;
+            car.iPadService.AddGoodsResponse retVal = ((car.iPadService.iPadServiceSoap)(this)).AddGoods(inValue);
+            return retVal.Body.AddGoodsResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        car.iPadService.DeleteGoodsResponse car.iPadService.iPadServiceSoap.DeleteGoods(car.iPadService.DeleteGoodsRequest request) {
+            return base.Channel.DeleteGoods(request);
+        }
+        
+        public string DeleteGoods(string strSalesID, string strGoodsID) {
+            car.iPadService.DeleteGoodsRequest inValue = new car.iPadService.DeleteGoodsRequest();
+            inValue.Body = new car.iPadService.DeleteGoodsRequestBody();
+            inValue.Body.strSalesID = strSalesID;
+            inValue.Body.strGoodsID = strGoodsID;
+            car.iPadService.DeleteGoodsResponse retVal = ((car.iPadService.iPadServiceSoap)(this)).DeleteGoods(inValue);
+            return retVal.Body.DeleteGoodsResult;
         }
     }
 }
