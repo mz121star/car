@@ -203,6 +203,7 @@
     <Content Include="images\images\car_05.gif" />
     <Content Include="images\product\1.jpg" />
     <Content Include="readme.txt" />
+    <Content Include="Scripts\angular.min.js" />
     <Content Include="Scripts\jquery-1.7.1.js" />
     <Content Include="Scripts\jquery-1.7.1.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
