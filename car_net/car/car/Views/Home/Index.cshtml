@@ -17,12 +17,7 @@
         <li><a href="#">home</a></li>
     </ol>
     <div class="row">
-        <div class="col-md-2 col-md-offset-10">
-            <div class="btn-group">
-                @Html.ActionLink("模式1", "Index", new { viewType = 1 }, new { @class = "  win1" })
-                @Html.ActionLink("模式2", "Index", new { viewType = 2 }, new { @class = "   win2" })
-            </div>
-        </div>
+
         <div id="left" class="col-xs-0 col-md-4">
             <div class="panel-group" id="accordion">
 
@@ -33,26 +28,27 @@
                         foreach (var item in firstList)
                         {
                             var id = item.GOODSCATEGORYID;
-                        <div class="panel-heading">
-                            <h4 class="panel-title">
-                                <a data-toggle="collapse" data-toggle="collapse" data-parent="#accordion" href="#collapseOne@(id)">
-                                    @item.GOODSCATEGORYNAME
-                                </a>
-                            </h4>
-                        </div>
-                    
-                        <div id="collapseOne@(id)" class="panel-collapse collapse on">
-                            <div class="panel-body">
-                                <ul class="nav nav-pills nav-stacked">
-                                    @foreach (var second in secondList.Where(x => x.FIRSTID == id))
-                                    {<li>
-                                            @Html.ActionLink(second.GOODSTYPENAME, "LoadGoods", new { typeId = second.GOODSTYPEID, viewType = Html.ViewContext.RouteData.Values["viewType"] },
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" data-toggle="collapse" data-parent="#accordion" href="#collapseOne@(id)">
+                                @item.GOODSCATEGORYNAME
+                            </a>
+                        </h4>
+                    </div>
+
+                    <div id="collapseOne@(id)" class="panel-collapse collapse on">
+                        <div class="panel-body">
+                            <ul class="nav nav-pills nav-stacked">
+                                @foreach (var second in secondList.Where(x => x.FIRSTID == id))
+                                    {
+                                    <li>
+                                        @Html.ActionLink(second.GOODSTYPENAME, "LoadGoods", new { typeId = second.GOODSTYPEID, viewType = Html.ViewContext.RouteData.Values["viewType"] },
                                                               new { onclick = "return LoadGoods(this);", @class = "list", data_ajax = true })
-                                        </li>
+                                    </li>
                                     }
-                                </ul>
-                            </div>
+                            </ul>
                         </div>
+                    </div>
                         }
                     }
                 </div>
