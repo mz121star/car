@@ -15,3 +15,12 @@ D:\Project\car\car\car_net\car\Redf.Business.WebService\bin\Newtonsoft.Json.Net2
 D:\Project\car\car\car_net\car\Redf.Business.WebService\obj\Debug\Redf.Business.WebService.csprojResolveAssemblyReference.cache
 D:\Project\car\car\car_net\car\Redf.Business.WebService\obj\Debug\Redf.Business.WebService.dll
 D:\Project\car\car\car_net\car\Redf.Business.WebService\obj\Debug\Redf.Business.WebService.pdb
+D:\Users\Sailor\Documents\GitHub\car\car_net\car\Redf.Business.WebService\bin\Redf.Business.WebService.dll.config
+D:\Users\Sailor\Documents\GitHub\car\car_net\car\Redf.Business.WebService\bin\Redf.Business.WebService.dll
+D:\Users\Sailor\Documents\GitHub\car\car_net\car\Redf.Business.WebService\bin\Redf.Business.WebService.pdb
+D:\Users\Sailor\Documents\GitHub\car\car_net\car\Redf.Business.WebService\bin\Newtonsoft.Json.Net20.dll
+D:\Users\Sailor\Documents\GitHub\car\car_net\car\Redf.Business.WebService\bin\Newtonsoft.Json.Net20.pdb
+D:\Users\Sailor\Documents\GitHub\car\car_net\car\Redf.Business.WebService\bin\Newtonsoft.Json.Net20.xml
+D:\Users\Sailor\Documents\GitHub\car\car_net\car\Redf.Business.WebService\obj\Debug\Redf.Business.WebService.csprojResolveAssemblyReference.cache
+D:\Users\Sailor\Documents\GitHub\car\car_net\car\Redf.Business.WebService\obj\Debug\Redf.Business.WebService.dll
+D:\Users\Sailor\Documents\GitHub\car\car_net\car\Redf.Business.WebService\obj\Debug\Redf.Business.WebService.pdb

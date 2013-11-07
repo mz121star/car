@@ -203,6 +203,7 @@
     <Content Include="images\images\car_05.gif" />
     <Content Include="images\product\1.jpg" />
     <Content Include="readme.txt" />
+    <Content Include="Scripts\angular.min.js" />
     <Content Include="Scripts\jquery-1.7.1.js" />
     <Content Include="Scripts\jquery-1.7.1.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
@@ -213,17 +214,17 @@
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\modernizr-2.5.3.js" />
-    <Content Include="Service References\iPadService\ipadService.wsdl" />
+    <None Include="Service References\iPadService\ipadService.wsdl" />
     <None Include="Views\Home\Car.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <None Include="Views\Home\Login.cshtml" />
-    <Content Include="Service References\iPadService\ipadService.disco" />
-    <Content Include="Service References\iPadService\configuration91.svcinfo" />
-    <Content Include="Service References\iPadService\configuration.svcinfo" />
-    <Content Include="Service References\iPadService\Reference.svcmap">
+    <None Include="Service References\iPadService\ipadService.disco" />
+    <None Include="Service References\iPadService\configuration91.svcinfo" />
+    <None Include="Service References\iPadService\configuration.svcinfo" />
+    <None Include="Service References\iPadService\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
-    </Content>
+    </None>
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

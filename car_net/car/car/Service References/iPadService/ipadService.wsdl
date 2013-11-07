@@ -65,31 +65,88 @@
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:element name="UploadBillData">
+      <s:element name="NewBill">
         <s:complexType>
           <s:sequence>
             <s:element minOccurs="0" maxOccurs="1" name="strBillData" type="s:string" />
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:element name="UploadBillDataResponse">
+      <s:element name="NewBillResponse">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="UploadBillDataResult" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="NewBillResult" type="s:string" />
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:element name="DeleteBillData">
+      <s:element name="DeleteBill">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="strBillID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strSalesID" type="s:string" />
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:element name="DeleteBillDataResponse">
+      <s:element name="DeleteBillResponse">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="DeleteBillDataResult" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="DeleteBillResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ClosingBill">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strSalesID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ClosingBillResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ClosingBillResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DownloadBill">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strSalesID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DownloadBillResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DownloadBillResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddGoods">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strSalesID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddGoodsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AddGoodsResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteGoods">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strSalesID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strGoodsID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteGoodsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DeleteGoodsResult" type="s:string" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -125,17 +182,41 @@
   <wsdl:message name="GetGoodsByTypeIDSoapOut">
     <wsdl:part name="parameters" element="tns:GetGoodsByTypeIDResponse" />
   </wsdl:message>
-  <wsdl:message name="UploadBillDataSoapIn">
-    <wsdl:part name="parameters" element="tns:UploadBillData" />
+  <wsdl:message name="NewBillSoapIn">
+    <wsdl:part name="parameters" element="tns:NewBill" />
   </wsdl:message>
-  <wsdl:message name="UploadBillDataSoapOut">
-    <wsdl:part name="parameters" element="tns:UploadBillDataResponse" />
+  <wsdl:message name="NewBillSoapOut">
+    <wsdl:part name="parameters" element="tns:NewBillResponse" />
   </wsdl:message>
-  <wsdl:message name="DeleteBillDataSoapIn">
-    <wsdl:part name="parameters" element="tns:DeleteBillData" />
+  <wsdl:message name="DeleteBillSoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteBill" />
   </wsdl:message>
-  <wsdl:message name="DeleteBillDataSoapOut">
-    <wsdl:part name="parameters" element="tns:DeleteBillDataResponse" />
+  <wsdl:message name="DeleteBillSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteBillResponse" />
+  </wsdl:message>
+  <wsdl:message name="ClosingBillSoapIn">
+    <wsdl:part name="parameters" element="tns:ClosingBill" />
+  </wsdl:message>
+  <wsdl:message name="ClosingBillSoapOut">
+    <wsdl:part name="parameters" element="tns:ClosingBillResponse" />
+  </wsdl:message>
+  <wsdl:message name="DownloadBillSoapIn">
+    <wsdl:part name="parameters" element="tns:DownloadBill" />
+  </wsdl:message>
+  <wsdl:message name="DownloadBillSoapOut">
+    <wsdl:part name="parameters" element="tns:DownloadBillResponse" />
+  </wsdl:message>
+  <wsdl:message name="AddGoodsSoapIn">
+    <wsdl:part name="parameters" element="tns:AddGoods" />
+  </wsdl:message>
+  <wsdl:message name="AddGoodsSoapOut">
+    <wsdl:part name="parameters" element="tns:AddGoodsResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteGoodsSoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteGoods" />
+  </wsdl:message>
+  <wsdl:message name="DeleteGoodsSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteGoodsResponse" />
   </wsdl:message>
   <wsdl:portType name="iPadServiceSoap">
     <wsdl:operation name="Authentication">
@@ -158,13 +239,29 @@
       <wsdl:input message="tns:GetGoodsByTypeIDSoapIn" />
       <wsdl:output message="tns:GetGoodsByTypeIDSoapOut" />
     </wsdl:operation>
-    <wsdl:operation name="UploadBillData">
-      <wsdl:input message="tns:UploadBillDataSoapIn" />
-      <wsdl:output message="tns:UploadBillDataSoapOut" />
+    <wsdl:operation name="NewBill">
+      <wsdl:input message="tns:NewBillSoapIn" />
+      <wsdl:output message="tns:NewBillSoapOut" />
     </wsdl:operation>
-    <wsdl:operation name="DeleteBillData">
-      <wsdl:input message="tns:DeleteBillDataSoapIn" />
-      <wsdl:output message="tns:DeleteBillDataSoapOut" />
+    <wsdl:operation name="DeleteBill">
+      <wsdl:input message="tns:DeleteBillSoapIn" />
+      <wsdl:output message="tns:DeleteBillSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ClosingBill">
+      <wsdl:input message="tns:ClosingBillSoapIn" />
+      <wsdl:output message="tns:ClosingBillSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DownloadBill">
+      <wsdl:input message="tns:DownloadBillSoapIn" />
+      <wsdl:output message="tns:DownloadBillSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddGoods">
+      <wsdl:input message="tns:AddGoodsSoapIn" />
+      <wsdl:output message="tns:AddGoodsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteGoods">
+      <wsdl:input message="tns:DeleteGoodsSoapIn" />
+      <wsdl:output message="tns:DeleteGoodsSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="iPadServiceSoap" type="tns:iPadServiceSoap">
@@ -214,8 +311,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="UploadBillData">
-      <soap:operation soapAction="http://tempuri.org/UploadBillData" style="document" />
+    <wsdl:operation name="NewBill">
+      <soap:operation soapAction="http://tempuri.org/NewBill" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -223,8 +320,44 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="DeleteBillData">
-      <soap:operation soapAction="http://tempuri.org/DeleteBillData" style="document" />
+    <wsdl:operation name="DeleteBill">
+      <soap:operation soapAction="http://tempuri.org/DeleteBill" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ClosingBill">
+      <soap:operation soapAction="http://tempuri.org/ClosingBill" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadBill">
+      <soap:operation soapAction="http://tempuri.org/DownloadBill" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddGoods">
+      <soap:operation soapAction="http://tempuri.org/AddGoods" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteGoods">
+      <soap:operation soapAction="http://tempuri.org/DeleteGoods" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -280,8 +413,8 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="UploadBillData">
-      <soap12:operation soapAction="http://tempuri.org/UploadBillData" style="document" />
+    <wsdl:operation name="NewBill">
+      <soap12:operation soapAction="http://tempuri.org/NewBill" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -289,8 +422,44 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="DeleteBillData">
-      <soap12:operation soapAction="http://tempuri.org/DeleteBillData" style="document" />
+    <wsdl:operation name="DeleteBill">
+      <soap12:operation soapAction="http://tempuri.org/DeleteBill" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ClosingBill">
+      <soap12:operation soapAction="http://tempuri.org/ClosingBill" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadBill">
+      <soap12:operation soapAction="http://tempuri.org/DownloadBill" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddGoods">
+      <soap12:operation soapAction="http://tempuri.org/AddGoods" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteGoods">
+      <soap12:operation soapAction="http://tempuri.org/DeleteGoods" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

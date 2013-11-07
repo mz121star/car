@@ -97,4 +97,13 @@ namespace car.DTO
     {
         public IList<Message> MessageResult { get; set; }
     }
+
+    public class GoodsDetail
+    {
+        public string SALESID { get; set; }
+        public string GOODSID { get; set; }
+        public string SUMNUMBER { get; set; }
+        public string REMARKS { get; set; }
+    }
+
 }
