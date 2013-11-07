@@ -3,23 +3,29 @@
 
 @if (Model.ViewType == null)
 {<div class="row">
-      
-         <div class="jumbotron">
-             <h1>欢迎光临4s店!</h1>
-             <p>
-                 优势一：会战沈城，低价购车，免费报名享优惠价格！<br/>
-优势二：签到有礼，购车有机会抽取万元大奖！<br/>
-优势三：保证沈城当期购车最低价格，正规4S店全国联保！<br/>
-优势四：团购现场看车，讲解（车型+车险）无强制性消费！<br/>
-优势五：车源丰富，团购享受优先提车
-             </p>
-             <p><a class="btn btn-success btn-lg" role="button">开始选购</a></p>
-         </div>
-        
- </div>
+
+        <div class="jumbotron">
+            <h1>欢迎光临4s店!</h1>
+            <p>
+                优势一：会战沈城，低价购车，免费报名享优惠价格！<br />
+                优势二：签到有礼，购车有机会抽取万元大奖！<br />
+                优势三：保证沈城当期购车最低价格，正规4S店全国联保！<br />
+                优势四：团购现场看车，讲解（车型+车险）无强制性消费！<br />
+                优势五：车源丰富，团购享受优先提车
+            </p>
+            <p><a class="btn btn-success btn-lg" role="button">开始选购</a></p>
+        </div>
+
+    </div>
 }
 else if (Model.ViewType == 1)
 {
+    <div class="col-md-2 col-md-offset-10">
+            <div class="btn-group">
+                @Html.ActionLink("模式1", "Index", new { viewType = 1 }, new { @class = "  win1" })
+                @Html.ActionLink("模式2", "Index", new { viewType = 2 }, new { @class = "   win2" })
+            </div>
+        </div>
     <div class="row">
         @foreach (Goods item in Model.Goods)
         {
@@ -39,37 +45,43 @@ else if (Model.ViewType == 1)
                             <a href="#" class="btn btn-primary" onclick="if(confirm('尚未选择车辆，是否跳转至选择车辆页？')) location.href='@Url.Action("Car")'; else return false;">购买</a>
                         }
                         else
-                        { 
-                            <a href="#" class="btn btn-primary" onclick="return confirm('确定要为<@(Session["Plate"])>购买吗？')">购买</a>
+                        {
+                            <a href="#" class="btn btn-primary" onclick="return confirm('确定要为<@(Session["plate"])>购买吗？')">购买</a>
                         }
                     </p>
                 </div>
             </div>
         }
-       
+
     </div>
-    
+
     <!-- Modal -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-          <h4 class="modal-title" id="myModalLabel">大图预览</h4>
-      </div>
-      <div class="modal-body">
-          <img src="@Url.Content("~/images/product/1.jpg")"/>
-          <p>嘉实多防冻</p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-         
-      </div>
-    </div><!-- /.modal-content -->
-  </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="myModalLabel">大图预览</h4>
+                </div>
+                <div class="modal-body">
+                    <img src='@Url.Content("~/images/product/1.jpg")' />
+                    <p>嘉实多防冻</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
 }
 else
 {
+    <div class="col-md-2 col-md-offset-10">
+            <div class="btn-group">
+                @Html.ActionLink("模式1", "Index", new { viewType = 1 }, new { @class = "  win1" })
+                @Html.ActionLink("模式2", "Index", new { viewType = 2 }, new { @class = "   win2" })
+            </div>
+        </div>
     @("模式2")
 }
