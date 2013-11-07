@@ -26,7 +26,11 @@ namespace car
                 return null;
             }
         }
-
+        
+        public PlateList GetAllPlate()
+        {
+            return JsonConvert.DeserializeObject<PlateList>(service.GetAllPlate());
+        }
 
         public Message UploadBillData(MasterDetail masterDetail)
         {
