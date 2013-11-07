@@ -24,14 +24,16 @@ namespace car
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
+                "Goods", // Route name
+                "Home/LoadGoods/{typeId}/{viewType}", // URL with parameters
+                new { controller = "Home", action = "LoadGoods", viewType = UrlParameter.Optional } // Parameter defaults
+            );
+            
+            routes.MapRoute(
                 "Default", // Route name
                 "{controller}/{action}/{viewType}", // URL with parameters
                 new { controller = "Home", action = "Index", viewType = UrlParameter.Optional } // Parameter defaults
             );
-
-
-
-
         }
 
         protected void Application_Start()
