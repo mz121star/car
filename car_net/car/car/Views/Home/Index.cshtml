@@ -12,14 +12,20 @@
 @using car.DTO;
 @using System.Web.Mvc.Html;
 <div class="container">
-      <ol class="breadcrumb">
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">home</a></li> 
-                </ol>
+    <ol class="breadcrumb">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">home</a></li>
+    </ol>
     <div class="row">
+        <div class="col-md-2 col-md-offset-10">
+            <div class="btn-group">
+                @Html.ActionLink("模式1", "Index", new { viewType = 1 }, new { @class = "  win1" })
+                @Html.ActionLink("模式2", "Index", new { viewType = 2 }, new { @class = "   win2" })
+            </div>
+        </div>
         <div id="left" class="col-xs-0 col-md-4">
             <div class="panel-group" id="accordion">
-              
+
                 <div class="panel panel-default">
                     @{
                         var firstList = Model.FirstList;
@@ -52,7 +58,7 @@
                 </div>
             </div>
         </div>
-        <div id="right">
+        <div id="right" class="col-xs-12 col-md-8">
             @Html.Partial("Partial\\_RightViewGrid")
         </div>
     </div>
