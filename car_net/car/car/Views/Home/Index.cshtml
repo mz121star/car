@@ -1,6 +1,6 @@
 ﻿<script>
     function LoadGoods(ele) {
-        $(ele).closest("#left").find("a").removeClass("active"); $(ele).addClass("active");
+        $(ele).closest("#left").find("li").removeClass("active"); $(ele).parent().addClass("active");
         var isAjax = $(ele).data('ajax');
         if (isAjax) {
             $.post($(ele).attr('href'), function (data) { $("#right").html(data) });
