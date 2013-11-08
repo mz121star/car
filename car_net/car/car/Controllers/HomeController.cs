@@ -77,6 +77,7 @@ namespace car.Controllers
             //FormsAuthentication.SignOut();
             Session["user"] = null;
             Session["Plate"] = null;
+            Session["SalesId"] = null;
             return View("Login");
         }
 
@@ -87,9 +88,37 @@ namespace car.Controllers
         }
 
         [SessionUserParameter]
-        public void SetPlate(string plate)
+        public JsonResult SetPlate(string plate, string salesId)
         {
+            var detail = services.DownloadBill(salesId);
             Session["Plate"] = plate;
+            Session["SalesId"] = salesId;
+            return Json(detail.DETAIL, JsonRequestBehavior.AllowGet);
+        }
+
+        [SessionUserParameter]
+        public JsonResult DeleteGoods(string goodsId)
+        {
+            var salesId = Session["SalesId"].ToString();
+            var message = services.DeleteGoods(salesId, goodsId);
+            return Json(message, JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult AddGoods()
+        {
+            GoodsDetailList list = new GoodsDetailList();
+            list.DETAIL = new List<GoodsDetail>();
+            list.DETAIL.Add(new GoodsDetail { GOODSID = "1" });
+            var message = services.AddGoods(list);
+            return Json(message, JsonRequestBehavior.AllowGet);
+        }
+
+        [SessionUserParameter]
+        public ActionResult DeleteBill()
+        {
+            var salesId = Session["SalesId"].ToString();
+            var message = services.DeleteBill(salesId);
+            return Json(message, JsonRequestBehavior.AllowGet);
         }
     }
 }

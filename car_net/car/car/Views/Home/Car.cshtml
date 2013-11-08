@@ -6,25 +6,33 @@
         $http({ method: 'GET', url: '@Url.Action("GetAllPlate")' }).success(function (data) {
             plate.list = data;
             plate.selectPlate = function (p) {
-                $.post('@Url.Action("SetPlate")', { plate: p.PLATE });
-                return false;
+                $http({ method: 'POST', url: '@Url.Action("SetPlate")', data: { plate: p.PLATE, salesId: p.SALESID } }).success(function (goodsList) {
+                    plate.goodsList = goodsList;
+                });
             };
         });
-            $scope.plate = plate;
+
+        plate.deleteGoods = function (goods) {
+            $http({ method: 'POST', url: '@Url.Action("DeleteGoods")', data: { goodsId: goods.GOODSID } }).success(function (data) {
+                plate.goodsList.
+            });
         }
+        $scope.plate = plate;
+    }
 </script>
 <div class="container" ng-app>
     <ol class="breadcrumb">
         <li><a href="#">Home</a></li>
         <li><a href="#" class="active">购物车</a></li>
     </ol>
-    <div class="row">
-        <div id="left" class="col-xs-4 col-md-4" ng-controller="PlantsListController">
+    <div class="row" ng-controller="PlantsListController">
+        <div id="left" class="col-xs-4 col-md-4">
             <div class="input-group">
                 <input type="text" class="form-control" ng-model='f'>
                 <span class="input-group-btn">
                     <button class="btn btn-default" type="button">
-                        Go!</button>
+                        Go!
+                    </button>
                 </span>
             </div>
             <!-- /input-group -->
@@ -36,64 +44,36 @@
         </div>
         <div id="right" class="col-xs-14 col-md-8">
             <div class="row">
-                
-                    <table class="table table-striped table-hover">
-                        <thead >
-                            <tr class="success">
+
+                <table class="table table-striped table-hover">
+                    <thead>
+                        <tr class="success">
                             <th>序号</th>
                             <th>商品/服务</th>
                             <th>单价</th>
                             <th>数量</th>
                             <th>金额</th>
                             <th>删除</th>
-                                </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>CD香水</td>
-                                <td>1</td>
-                                <td>1</td>
-                                <td>1</td>
-                                <td>
-                                    <button class="btn btn-danger ">删除</button></td>
-                            </tr>
-                            <tr>
-                                <td>1</td>
-                                <td>轮胎</td>
-                                <td>1</td>
-                                <td>1</td>
-                                <td>1</td>
-                                <td>
-                                    <button class="btn btn-danger ">删除</button></td>
-                            </tr>
-                            <tr>
-                                <td>1</td>
-                                <td>CD机</td>
-                                <td>1</td>
-                                <td>1</td>
-                                <td>1</td>
-                                <td>
-                                    <button class="btn btn-danger ">删除</button></td>
-                            </tr>
-                            <tr>
-                                <td>1</td>
-                                <td>毛tan</td>
-                                <td>1</td>
-                                <td>1</td>
-                                <td>1</td>
-                                <td>
-                                    <button class="btn btn-danger ">删除</button></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat='goods in plate.goodsList'>
+                            <td>{{$index}}</td>
+                            <td>{{goods.GOODSID}}</td>
+                            <td>{{goods.SALEPRICE}}</td>
+                            <td><input type="number" value="{{goods.SUMNUMBER}}" ng-required min="1" ng-model="goods.SUMNUMBER" /></td>
+                            <td>{{goods.SALEPRICE * goods.SUMNUMBER}}</td>
+                            <td>
+                                <button class="btn btn-danger " ng-click="plate.deleteGoods(goods)">删除</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
 
-                
+
                 <div class="panel panel-default">
-
-                        <div class="panel-footer">总计：800元</div>
-                    </div>
+                    <div class="panel-footer">总计：800元</div>
+                </div>
             </div>
         </div>
     </div>

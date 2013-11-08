@@ -42,7 +42,7 @@ namespace Redf.Business.WebService
         }
         /// <summary>
         /// 取所有牌照信息
-        /// 返回结果包括：牌照号码（PLATE）
+        /// 返回结果包括：牌照号码（PLATE）、单据编码
         /// 备注：可缓存于iPad前端用于在新增账单时进行检验输入牌照是否有效
         /// </summary>
         /// <returns></returns>
@@ -52,9 +52,10 @@ namespace Redf.Business.WebService
             DataSet dsResult = new DataSet();
             dsResult.Tables.Add("RESULT");
             dsResult.Tables[0].Columns.Add("PLATE");
-            dsResult.Tables[0].Rows.Add(new object[] { "辽A00008" });
-            dsResult.Tables[0].Rows.Add(new object[] { "辽B00002" });
-            dsResult.Tables[0].Rows.Add(new object[] { "辽C98888" });
+            dsResult.Tables[0].Columns.Add("SALESID");
+            dsResult.Tables[0].Rows.Add(new object[] { "辽A00008", "E512E00F-CA44-6FA-F9C6-10CCDDB92BB8" });
+            dsResult.Tables[0].Rows.Add(new object[] { "辽B00002", "E512E00F-6YG4-6F7A-F9C6-10CCDDB92BB8" });
+            dsResult.Tables[0].Rows.Add(new object[] { "辽C98888", "E51G200F-CA44-6F7A-F9C6-10CCDDFWQ1B8" });
             return JsonConvert.SerializeObject(dsResult);
         }
         /// <summary>
@@ -311,7 +312,7 @@ namespace Redf.Business.WebService
         /// <summary>
         /// 获取账单明细
         /// 一个字符串参数：单据编码
-        /// 返回Json字符串：商品编码(GOODSID)、数量（SUMNUMBER）、备注（REMARKS）;
+        /// 返回Json字符串：商品编码(GOODSID)、价格（SALEPRICE）、数量（SUMNUMBER）、备注（REMARKS）;
         /// 
         /// 参数示例字符串：E512E00F-CA44-6F7A-F9C6-10CCDDB92BB8
         /// 返回示例字符串：{"DETAIL":[{"GOODSID":"TRI_74fb6869be042b80","SUMNUMBER":"1.00","REMARKS":"无"}]}
@@ -324,9 +325,10 @@ namespace Redf.Business.WebService
             DataSet dsBill = new DataSet();
             dsBill.Tables.Add("DETAIL");
             dsBill.Tables[0].Columns.Add("GOODSID");
+            dsBill.Tables[0].Columns.Add("SALEPRICE");
             dsBill.Tables[0].Columns.Add("SUMNUMBER");
             dsBill.Tables[0].Columns.Add("REMARKS");
-            dsBill.Tables[0].Rows.Add(new object[] { "TRI_74fb6869be042b80", "1.00", "无" });
+            dsBill.Tables[0].Rows.Add(new object[] { "TRI_74fb6869be042b80", "180", "1.00", "无" });
             return JsonConvert.SerializeObject(dsBill);
         }
 

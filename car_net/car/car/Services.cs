@@ -26,7 +26,7 @@ namespace car
                 return null;
             }
         }
-        
+
         public PlateList GetAllPlate()
         {
             return JsonConvert.DeserializeObject<PlateList>(service.GetAllPlate());
@@ -53,37 +53,37 @@ namespace car
         public Message NewBill(MasterDetail masterDetail)
         {
             var message = service.NewBill(JsonConvert.SerializeObject(masterDetail));
-            return JsonConvert.DeserializeObject<MessageList>(message).MessageResult.FirstOrDefault();
+            return JsonConvert.DeserializeObject<MessageList>(message).RESULT.FirstOrDefault();
         }
 
         public Message DeleteBill(string strSalesID)
         {
             var message = service.DeleteBill(strSalesID);
-            return JsonConvert.DeserializeObject<MessageList>(message).MessageResult.FirstOrDefault();
+            return JsonConvert.DeserializeObject<MessageList>(message).RESULT.FirstOrDefault();
         }
 
         public Message ClosingBill(string strSalesID)
         {
             var message = service.ClosingBill(strSalesID);
-            return JsonConvert.DeserializeObject<MessageList>(message).MessageResult.FirstOrDefault();
+            return JsonConvert.DeserializeObject<MessageList>(message).RESULT.FirstOrDefault();
         }
 
         public Message DeleteGoods(string strSalesID, string strGoodsID)
         {
             var message = service.DeleteGoods(strSalesID, strGoodsID);
-            return JsonConvert.DeserializeObject<MessageList>(message).MessageResult.FirstOrDefault();
+            return JsonConvert.DeserializeObject<MessageList>(message).RESULT.FirstOrDefault();
         }
 
-        public IList<Detail> DownloadBill(string strSalesID)
+        public DetailList DownloadBill(string strSalesID)
         {
             var detail = service.DownloadBill(strSalesID);
-            return JsonConvert.DeserializeObject<IList<Detail>>(detail);
+            return JsonConvert.DeserializeObject<DetailList>(detail);
         }
 
-        public Message AddGoods(IList<GoodsDetail> goodsDetailList)
+        public Message AddGoods(GoodsDetailList goodsDetailList)
         {
             var message = service.AddGoods(JsonConvert.SerializeObject(goodsDetailList));
-            return JsonConvert.DeserializeObject<MessageList>(message).MessageResult.FirstOrDefault();
+            return JsonConvert.DeserializeObject<MessageList>(message).RESULT.FirstOrDefault();
         }
     }
 }

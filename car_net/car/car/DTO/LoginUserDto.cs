@@ -24,6 +24,7 @@ namespace car.DTO
     public class Plate
     {
         public string PLATE { get; set; }
+        public string SALESID { get; set; }
     }
 
     public class FirstGoodsList
@@ -83,8 +84,14 @@ namespace car.DTO
     public class Detail
     {
         public string GOODSID { get; set; }
+        public string SALEPRICE { get; set; }
         public string SUMNUMBER { get; set; }
         public string REMARKS { get; set; }
+    }
+
+    public class DetailList
+    {
+        public IList<Detail> DETAIL { get; set; }
     }
 
     public class Message
@@ -95,7 +102,7 @@ namespace car.DTO
 
     public class MessageList
     {
-        public IList<Message> MessageResult { get; set; }
+        public IList<Message> RESULT { get; set; }
     }
 
     public class GoodsDetail
@@ -106,4 +113,8 @@ namespace car.DTO
         public string REMARKS { get; set; }
     }
 
+    public class GoodsDetailList
+    {
+        public IList<GoodsDetail> DETAIL { get; set; }
+    }
 }
