@@ -107,7 +107,7 @@ namespace Redf.Business.WebService
             else if (strCategoryID == "TRI_f59c3cdea63eaaba")
             {
                 dsResult.Tables[0].Rows.Add(new object[] { "TRI_6ca92e02356d2013", "贴膜" });
-                dsResult.Tables[0].Rows.Add(new object[] { "TRI_b4j5kb0nb6ebe56a", "发动机护板" });
+                dsResult.Tables[0].Rows.Add(new object[] { "TRI_b4j5kb0nb6ebe56a", "轮胎" });
             }
             return JsonConvert.SerializeObject(dsResult);
         }
@@ -164,8 +164,15 @@ namespace Redf.Business.WebService
             }
             else if (strTypeID == "TRI_b4j5kb0nb6ebe56a")
             {
-                dsResult.Tables[0].Rows.Add(new object[] { "TRI_ac409823fd014c18", "钢护板", 350.00, "image01.jpg", "关于商品的描述" });
-                dsResult.Tables[0].Rows.Add(new object[] { "TRI_23457d454suy06e2", "铝合金护板", 550.00, "image02.jpg", "关于商品的描述" });
+                dsResult.Tables[0].Rows.Add(new object[] { "TRI_ac409823fd014c18", "韩泰轮胎", 350.00, "http://image.cn.made-in-china.com/2f0j01SMotQUfBhhkm/%E4%B8%9C%E6%B4%8B%E8%BD%AE%E8%83%8E.jpg", "关于商品的描述" });
+                dsResult.Tables[0].Rows.Add(new object[] { "TRI_23457d454suy06e2", "耐跑轮胎", 550.00, "http://pic1a.nipic.com/2008-10-09/200810915533125_2.jpg", "关于商品的描述" });
+                dsResult.Tables[0].Rows.Add(new object[] { "TRI_23fds0454suy06e2", "A轮胎", 550.00, "http://i3.sinaimg.cn/qc/2011/0406/U5272P33DT20110406155042.jpg", "关于商品的描述" });
+                dsResult.Tables[0].Rows.Add(new object[] { "TRI_23457d454suy06e2", "B轮胎", 550.00, "http://se.risechina.org/kjgj/UploadFiles_3299/200812/2008120910102166.jpg", "关于商品的描述" });
+                dsResult.Tables[0].Rows.Add(new object[] { "TRI_sftf7d454suy06e2", "C轮胎", 550.00, "http://www.btqcc.com/uploadfiles/product/ee3cfa192e9fc7e74ab2d8a01b76bf6a.jpg", "关于商品的描述" });
+                dsResult.Tables[0].Rows.Add(new object[] { "TRI_23457d454sfyy6e2", "D轮胎", 550.00, "http://a4.att.hudong.com/67/38/01300000196604122354384014076.jpg", "关于商品的描述" });
+                dsResult.Tables[0].Rows.Add(new object[] { "TRI_23457dfdsaq06we2", "E轮胎", 550.00, "http://pic3.nipic.com/20090508/2232422_085944008_2.jpg", "关于商品的描述" });
+                dsResult.Tables[0].Rows.Add(new object[] { "TRI_23457d454sufsa35", "F轮胎", 550.00, "http://image.zcool.com.cn/35/25/m_1247455340221.jpg", "关于商品的描述" });
+                dsResult.Tables[0].Rows.Add(new object[] { "TRI_2345ffds4587ssfw", "G轮胎", 550.00, "http://www.iconpng.com/png/desktop-icons/wheel.png", "关于商品的描述" });
             }
 
             return JsonConvert.SerializeObject(dsResult);
