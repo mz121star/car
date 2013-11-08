@@ -14,7 +14,6 @@
 
         plate.deleteGoods = function (goods) {
             $http({ method: 'POST', url: '@Url.Action("DeleteGoods")', data: { goodsId: goods.GOODSID } }).success(function (data) {
-                plate.goodsList.
             });
         }
         $scope.plate = plate;
