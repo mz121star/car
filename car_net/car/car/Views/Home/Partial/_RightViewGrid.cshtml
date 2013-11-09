@@ -20,12 +20,7 @@
 }
 else if (Model.ViewType == 1)
 {
-    <div class="col-md-2 col-md-offset-10">
-        <div class="btn-group">
-            @Html.ActionLink("模式1", "Index", new { viewType = 1 }, new { @class = "  win1" })
-            @Html.ActionLink("模式2", "Index", new { viewType = 2 }, new { @class = "   win2" })
-        </div>
-    </div>
+   
     <div class="row">
         @foreach (Goods item in Model.Goods)
         {
@@ -80,13 +75,7 @@ else if (Model.ViewType == 1)
 }
 else
 {
-    <div class="col-md-2 col-md-offset-10">
-        <div class="btn-group">
-            @Html.ActionLink("模式1", "Index", new { viewType = 1 }, new { @class = "  win1" })
-            @Html.ActionLink("模式2", "Index", new { viewType = 2 }, new { @class = "   win2" })
-        </div>
-    </div>
-   
+     
     
     
     
