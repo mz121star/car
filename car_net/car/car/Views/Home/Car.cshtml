@@ -19,8 +19,11 @@
 
         plate.deleteGoods = function (goods) {
             $http({ method: 'POST', url: '@Url.Action("DeleteGoods")', data: { goodsId: goods.GOODSID } }).success(function (data) {
-                var index = _.indexOf(plate.goodsList, goods);
-                plate.goodsList.splice(index, 1);
+                if (data.ISSUCCESS == 1) {
+                    var index = _.indexOf(plate.goodsList, goods);
+                    plate.goodsList.splice(index, 1);
+                }
+                alert(data.MESSAGE);
             });
         }
         $scope.plate = plate;
