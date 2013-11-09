@@ -50,9 +50,9 @@ namespace car
             return JsonConvert.DeserializeObject<GoodsList>(list);
         }
 
-        public Message NewBill(MasterDetail masterDetail)
+        public Message NewBill(Master master)
         {
-            var message = service.NewBill(JsonConvert.SerializeObject(masterDetail));
+            var message = service.NewBill(JsonConvert.SerializeObject(master));
             return JsonConvert.DeserializeObject<MessageList>(message).RESULT.FirstOrDefault();
         }
 

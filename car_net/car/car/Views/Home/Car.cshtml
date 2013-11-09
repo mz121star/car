@@ -17,10 +17,13 @@
             };
         });
 
-            plate.deleteGoods = function (goods) {
-                $http({ method: 'POST', url: '@Url.Action("DeleteGoods")', data: { goodsId: goods.GOODSID } }).success(function (data) {
-                var index = _.indexOf(plate.goodsList, goods);
-                plate.goodsList.splice(index, 1);
+        plate.deleteGoods = function (goods) {
+            $http({ method: 'POST', url: '@Url.Action("DeleteGoods")', data: { goodsId: goods.GOODSID } }).success(function (data) {
+                if (data.ISSUCCESS == 1) {
+                    var index = _.indexOf(plate.goodsList, goods);
+                    plate.goodsList.splice(index, 1);
+                }
+                alert(data.MESSAGE);
             });
         };
         $scope.plate = plate;
@@ -32,13 +35,11 @@
 
 
 <div class="container" ng-app>
-   
     <ol class="breadcrumb">
         <li><i class="fa fa-home"></i><a href="#">Home</a></li>
         <li><a href="#" class="active">购物车</a></li>
     </ol>
     <div class="row" ng-controller="PlantsListController">
-       
         <div id="left" class="col-xs-4 col-md-4">
             <div class="input-group">
                 <input type="text" class="form-control" ng-model='f'>
@@ -56,9 +57,6 @@
             </div>
         </div>
         <div id="right" class="col-xs-14 col-md-8">
-               
-       
-     
             <div class="row">
                   <div class="input-group">
                 

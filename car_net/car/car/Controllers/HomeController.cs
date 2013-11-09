@@ -104,6 +104,7 @@ namespace car.Controllers
             return Json(message, JsonRequestBehavior.AllowGet);
         }
 
+        [SessionUserParameter]
         public ActionResult AddGoods()
         {
             GoodsDetailList list = new GoodsDetailList();
@@ -118,6 +119,23 @@ namespace car.Controllers
         {
             var salesId = Session["SalesId"].ToString();
             var message = services.DeleteBill(salesId);
+            return Json(message, JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult NewBill(string plate)
+        {
+            var user = (LoginUserDto)Session["user"];
+            var master = new Master();
+            master.EMPLOYEEID = user.EMPLOYEEID;
+            master.SALESID = Guid.NewGuid().ToString();
+            master.PLATE = plate;
+            var message = services.NewBill(master);
+            return Json(message, JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult ClosingBill(string salesId)
+        {
+            var message = services.ClosingBill(salesId);
             return Json(message, JsonRequestBehavior.AllowGet);
         }
     }
