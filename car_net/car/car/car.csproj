@@ -216,6 +216,7 @@
     <Content Include="Scripts\modernizr-2.5.3.js" />
     <None Include="Service References\iPadService\ipadService.wsdl" />
     <None Include="Views\Home\Car.cshtml" />
+    <Content Include="Scripts\underscore-min.js" />
     <Content Include="Views\Home\Index.cshtml" />
     <None Include="Views\Home\Login.cshtml" />
     <None Include="Service References\iPadService\ipadService.disco" />

@@ -325,10 +325,19 @@ namespace Redf.Business.WebService
             DataSet dsBill = new DataSet();
             dsBill.Tables.Add("DETAIL");
             dsBill.Tables[0].Columns.Add("GOODSID");
+            dsBill.Tables[0].Columns.Add("GOODSNAME");
             dsBill.Tables[0].Columns.Add("SALEPRICE");
             dsBill.Tables[0].Columns.Add("SUMNUMBER");
             dsBill.Tables[0].Columns.Add("REMARKS");
-            dsBill.Tables[0].Rows.Add(new object[] { "TRI_74fb6869be042b80", "180", "1.00", "无" });
+            dsBill.Tables[0].Rows.Add(new object[] { "TRI_23fds0454suy06e2", "A轮胎", "550", "2", "无" });
+            dsBill.Tables[0].Rows.Add(new object[] { "TRI_23457d454suy06e2", "B轮胎", "550", "1", "无" });
+            dsBill.Tables[0].Rows.Add(new object[] { "TRI_sftf7d454suy06e2", "C轮胎", "550", "2", "无" });
+            dsBill.Tables[0].Rows.Add(new object[] { "TRI_23457d454sfyy6e2", "D轮胎", "550", "3", "无" });
+            dsBill.Tables[0].Rows.Add(new object[] { "TRI_23457dfdsaq06we2", "E轮胎", "550", "4", "无" });
+            dsBill.Tables[0].Rows.Add(new object[] { "TRI_23457d454sufsa35", "F轮胎", "550", "6", "无" });
+            dsBill.Tables[0].Rows.Add(new object[] { "TRI_2345ffds4587ssfw", "G轮胎", "550", "1", "无" });
+            
+            
             return JsonConvert.SerializeObject(dsBill);
         }
 

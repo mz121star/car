@@ -1,5 +1,6 @@
 ﻿@using System.Web.Mvc.Html;
 <script src='@Url.Content("~/Scripts/angular.min.js")' type="text/javascript"></script>
+<script src='@Url.Content("~/Scripts/underscore-min.js")' type="text/javascript"></script>
 <script type="text/javascript">
     function PlantsListController($scope, $http) {
         var plate = {};
@@ -8,12 +9,18 @@
             plate.selectPlate = function (p) {
                 $http({ method: 'POST', url: '@Url.Action("SetPlate")', data: { plate: p.PLATE, salesId: p.SALESID } }).success(function (goodsList) {
                     plate.goodsList = goodsList;
+                    plate.sum = 0;
+                    _.each(plate.goodsList, function (goods) {
+                        plate.sum = plate.sum + parseInt(goods.SALEPRICE);
+                    });
                 });
             };
         });
 
         plate.deleteGoods = function (goods) {
             $http({ method: 'POST', url: '@Url.Action("DeleteGoods")', data: { goodsId: goods.GOODSID } }).success(function (data) {
+                var index = _.indexOf(plate.goodsList, goods);
+                plate.goodsList.splice(index, 1);
             });
         }
         $scope.plate = plate;
@@ -57,8 +64,8 @@
                     </thead>
                     <tbody>
                         <tr ng-repeat='goods in plate.goodsList'>
-                            <td>{{$index}}</td>
-                            <td>{{goods.GOODSID}}</td>
+                            <td>{{$index + 1}}</td>
+                            <td>{{goods.GOODSNAME}}</td>
                             <td>{{goods.SALEPRICE}}</td>
                             <td><input type="number" value="{{goods.SUMNUMBER}}" ng-required min="1" ng-model="goods.SUMNUMBER" /></td>
                             <td>{{goods.SALEPRICE * goods.SUMNUMBER}}</td>
@@ -71,7 +78,7 @@
 
 
                 <div class="panel panel-default">
-                    <div class="panel-footer">总计：800元</div>
+                    <div class="panel-footer">总计：{{plate.sum}}元</div>
                 </div>
             </div>
         </div>

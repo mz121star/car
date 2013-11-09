@@ -84,6 +84,7 @@ namespace car.DTO
     public class Detail
     {
         public string GOODSID { get; set; }
+        public string GOODSNAME { get; set; }
         public string SALEPRICE { get; set; }
         public string SUMNUMBER { get; set; }
         public string REMARKS { get; set; }
