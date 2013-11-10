@@ -105,11 +105,11 @@ namespace car.Controllers
         }
 
         [SessionUserParameter]
-        public ActionResult AddGoods()
+        public ActionResult AddGoods(string goodsId)
         {
             GoodsDetailList list = new GoodsDetailList();
             list.DETAIL = new List<GoodsDetail>();
-            list.DETAIL.Add(new GoodsDetail { GOODSID = "1" });
+            list.DETAIL.Add(new GoodsDetail { GOODSID = goodsId, SALESID = Session["SalesId"].ToString() });
             var message = services.AddGoods(list);
             return Json(message, JsonRequestBehavior.AllowGet);
         }
@@ -117,9 +117,21 @@ namespace car.Controllers
         [SessionUserParameter]
         public ActionResult DeleteBill()
         {
-            var salesId = Session["SalesId"].ToString();
-            var message = services.DeleteBill(salesId);
-            return Json(message, JsonRequestBehavior.AllowGet);
+            try
+            {
+                var salesId = Session["SalesId"].ToString();
+                var message = services.DeleteBill(salesId);
+                if (message.ISSUCCESS == "1")
+                {
+                    Session["SalesId"] = null;
+                    Session["Plate"] = null;
+                }
+                return Json(message, JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception)
+            {
+                return Json(new Message { ISSUCCESS = "0", MESSAGE = "更新失败，请先选择车牌号！" }, JsonRequestBehavior.AllowGet);
+            }
         }
 
         public ActionResult NewBill(string plate)
@@ -130,13 +142,50 @@ namespace car.Controllers
             master.SALESID = Guid.NewGuid().ToString();
             master.PLATE = plate;
             var message = services.NewBill(master);
-            return Json(message, JsonRequestBehavior.AllowGet);
+
+            MessageResult mr = new MessageResult();
+            mr.MESSAGE = message;
+            if (message.ISSUCCESS == "1")
+            {
+                mr.PLATE = new Plate() { PLATE = plate, SALESID = master.SALESID };
+            }
+            return Json(mr, JsonRequestBehavior.AllowGet);
         }
 
-        public ActionResult ClosingBill(string salesId)
+        public ActionResult ClosingBill()
         {
-            var message = services.ClosingBill(salesId);
-            return Json(message, JsonRequestBehavior.AllowGet);
+            try
+            {
+                var salesId = Session["SalesId"].ToString();
+                var message = services.ClosingBill(salesId);
+                if (message.ISSUCCESS == "1")
+                {
+                    Session["SalesId"] = null;
+                    Session["Plate"] = null;
+                }
+                return Json(message, JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception)
+            {
+                return Json(new Message { ISSUCCESS = "0", MESSAGE = "更新失败，请先选择车牌号！" }, JsonRequestBehavior.AllowGet);
+            }
+        }
+
+        public ActionResult ModifyGoods(GoodsDetail goods)
+        {
+            try
+            {
+                GoodsDetailList list = new GoodsDetailList();
+                goods.SALESID = Session["SalesId"].ToString();
+                list.DETAIL = new List<GoodsDetail>() { };
+                list.DETAIL.Add(goods);
+                var message = services.AddGoods(list);
+                return Json(message, JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception)
+            {
+                return Json(new Message { ISSUCCESS = "0", MESSAGE = "更新失败，请先选择车牌号！" }, JsonRequestBehavior.AllowGet);
+            }
         }
     }
 }

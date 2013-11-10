@@ -101,6 +101,12 @@ namespace car.DTO
         public string MESSAGE { get; set; }
     }
 
+    public class MessageResult
+    {
+        public Message MESSAGE { get;set; }
+        public Plate PLATE { get; set; }
+    }
+
     public class MessageList
     {
         public IList<Message> RESULT { get; set; }
