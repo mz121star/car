@@ -32,6 +32,10 @@
             alert("添加成功");
             plate.newPlate = "";
         };
+
+        plate.modifyGoods = function (goods) {
+
+        }
         $scope.plate = plate;
     }
 
@@ -80,6 +84,7 @@
                             <th>单价</th>
                             <th>数量</th>
                             <th>金额</th>
+                            <th>保存</th>
                             <th>删除</th>
                         </tr>
                     </thead>
@@ -92,6 +97,9 @@
                                 <input type="number" value="{{goods.SUMNUMBER}}" ng-required min="1" ng-model="goods.SUMNUMBER" />
                             </td>
                             <td>{{goods.SALEPRICE * goods.SUMNUMBER}}<i class="fa fa-jpy"></i></td>
+                            <td>
+                                <button class="btn btn-success " ng-click="plate.modifyGoods(goods)"><i class="fa fa-save"></i>保存</button>
+                            </td>
                             <td>
                                 <button class="btn btn-danger " ng-click="plate.deleteGoods(goods)"><i class="fa fa-minus-circle"></i>删除</button>
                             </td>
