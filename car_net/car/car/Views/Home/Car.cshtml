@@ -3,7 +3,7 @@
 <script src='@Url.Content("~/Scripts/underscore-min.js")' type="text/javascript"></script>
 <script type="text/javascript">
     function PlantsListController($scope, $http) {
-        var plate = { newPlate: '',canOp: true };
+        var plate = { newPlate: '', canOp: true };
         $http({ method: 'GET', url: '@Url.Action("GetAllPlate")' }).success(function (data) {
             plate.list = data;
             plate.selectPlate = function (p) {
@@ -18,13 +18,13 @@
                     });
                     plate.selectedPlate = p;
                     plate.canOp = false;
-                    _.each(plate.goodsList, function (goods) {                        
+                    _.each(plate.goodsList, function (goods) {
                         plate.sum = plate.sum + (parseInt(goods.SALEPRICE) * parseInt(goods.SUMNUMBER));
                     });
                     $scope.$watch("plate.goodsList", function (v1, v2) {
                         plate.sum = 0;
                         _.each(v1, function (goods) {
-                            if (goods.SUMNUMBER < 1 || goods.SUMNUMBER==null ) goods.SUMNUMBER = 1;
+                            if (goods.SUMNUMBER < 1 || goods.SUMNUMBER == null) goods.SUMNUMBER = 1;
                             plate.sum = plate.sum + (parseInt(goods.SALEPRICE) * parseInt(goods.SUMNUMBER));
                         });
                     }, true);
@@ -43,9 +43,9 @@
         };
 
         plate.addPlate = function () {
-            
+
             $http({ method: 'POST', url: '@Url.Action("NewBill")', data: { plate: plate.newPlate } }).success(function (data) {
-                if(data.MESSAGE.ISSUCCESS =="1"){
+                if (data.MESSAGE.ISSUCCESS == "1") {
                     plate.list.push({ PLATE: data.PLATE.PLATE, SALESID: data.PLATE.SALESID });
                     plate.newPlate = "";
                 }
@@ -60,25 +60,29 @@
         }
 
         plate.deleteBill = function () {
-            $http({ method: 'POST', url: '@Url.Action("DeleteBill")'}).success(function (data) {
-                alert(data.MESSAGE);
-                if (data.ISSUCCESS == "1") {
-                    plate.goodsList = null;
-                    plate.canOp = true;
-                    plate.list.splice(_.indexOf(plate.list, plate.selectedPlate),1);
-                }
-            });
+            if (confirm("确定要删除账单？")) {
+                $http({ method: 'POST', url: '@Url.Action("DeleteBill")' }).success(function (data) {
+                    alert(data.MESSAGE);
+                    if (data.ISSUCCESS == "1") {
+                        plate.goodsList = null;
+                        plate.canOp = true;
+                        plate.list.splice(_.indexOf(plate.list, plate.selectedPlate), 1);
+                    }
+                });
+            }
         };
 
         plate.closingBill = function () {
-            $http({ method: 'POST', url: '@Url.Action("ClosingBill")' }).success(function (data) {
-                alert(data.MESSAGE);
-                if(data.ISSUCCESS=="1"){
-                    plate.goodsList = null;
-                    plate.canOp = true;
-                    plate.list.splice(_.indexOf(plate.list, plate.selectedPlate), 1);
-                }
-            });
+            if (confirm("确定要上传账单？")) {
+                $http({ method: 'POST', url: '@Url.Action("ClosingBill")' }).success(function (data) {
+                    alert(data.MESSAGE);
+                    if (data.ISSUCCESS == "1") {
+                        plate.goodsList = null;
+                        plate.canOp = true;
+                        plate.list.splice(_.indexOf(plate.list, plate.selectedPlate), 1);
+                    }
+                });
+            }
         };
 
         $scope.plate = plate;
@@ -91,7 +95,7 @@
 
 <div class="container" ng-app>
     <ol class="breadcrumb">
-        <li><i class="fa fa-home"></i><a href="#">Home</a></li>
+        <li><i class="fa fa-home"></i><a href='@Url.Action("index", new { viewType = Html.ViewContext.RouteData.Values["viewType"] })'>Home</a></li>
         <li><a href="#" class="active">购物车</a></li>
     </ol>
     <div class="row" ng-controller="PlantsListController">
@@ -106,7 +110,7 @@
             </div>
             <!-- /input-group -->
             <div class="list-group">
-                <a href="#" class="list-group-item" ng-class="{active: p.on}"  ng-repeat='p in plate.list|filter:f' ng-click='plate.selectPlate(p)'>
+                <a href="#" class="list-group-item" ng-class="{active: p.on}" ng-repeat='p in plate.list|filter:f' ng-click='plate.selectPlate(p)'>
                     <h4 class="list-group-item-heading"><i class="fa fa-truck"></i> {{p.PLATE}}</h4>
                 </a>
             </div>
