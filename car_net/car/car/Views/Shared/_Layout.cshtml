@@ -25,13 +25,26 @@
     <!-- <script src="../../assets/js/html5shiv.js"></script>
      <script src="../../assets/js/respond.min.js"></script>-->
     <!--[endif]-->
+    <script>
+        $(function () {
+            var navH = $("#container").offset().top;
+            $(window).on("scroll", (function () {
+                var scroH = $(this).scrollTop();
+                if (scroH > navH) {
+                    $("#container").css({ "position": "fixed", width: "100%", "top": "0" });
+                } else {
+                    $("#container").css({ "position": "relative", "margin-bottom": "20px" });
+                }
+            }));
+        });
+    </script>
 </head>
 
 <body>
 
     <!-- Static navbar -->
 
-    <div class="navbar navbar-default navbar-static-top">
+    <div class="navbar navbar-default navbar-static-top" id="container">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
