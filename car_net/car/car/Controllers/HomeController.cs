@@ -32,6 +32,8 @@ namespace car.Controllers
             tree.FirstList = categoryList.RESULT;
             tree.SecondList = typeList;
             tree.ViewType = null;
+            tree.Brand = services.GetAllBrand().RESULT;
+            tree.Cars = services.GetAllCars().RESULT;
 
             return View(tree);
         }
