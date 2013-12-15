@@ -58,6 +58,18 @@ namespace car.iPadService {
         // CODEGEN: 命名空间 http://tempuri.org/ 的元素名称 strSalesID 以后生成的消息协定未标记为 nillable
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/DeleteGoods", ReplyAction="*")]
         car.iPadService.DeleteGoodsResponse DeleteGoods(car.iPadService.DeleteGoodsRequest request);
+        
+        // CODEGEN: 命名空间 http://tempuri.org/ 的元素名称 GetAllBrandResult 以后生成的消息协定未标记为 nillable
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/GetAllBrand", ReplyAction="*")]
+        car.iPadService.GetAllBrandResponse GetAllBrand(car.iPadService.GetAllBrandRequest request);
+        
+        // CODEGEN: 命名空间 http://tempuri.org/ 的元素名称 GetAllCarsResult 以后生成的消息协定未标记为 nillable
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/GetAllCars", ReplyAction="*")]
+        car.iPadService.GetAllCarsResponse GetAllCars(car.iPadService.GetAllCarsRequest request);
+        
+        // CODEGEN: 命名空间 http://tempuri.org/ 的元素名称 strTypeID 以后生成的消息协定未标记为 nillable
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/GetGoodsByTypeIDWithPage", ReplyAction="*")]
+        car.iPadService.GetGoodsByTypeIDWithPageResponse GetGoodsByTypeIDWithPage(car.iPadService.GetGoodsByTypeIDWithPageRequest request);
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -802,6 +814,208 @@ namespace car.iPadService {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class GetAllBrandRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="GetAllBrand", Namespace="http://tempuri.org/", Order=0)]
+        public car.iPadService.GetAllBrandRequestBody Body;
+        
+        public GetAllBrandRequest() {
+        }
+        
+        public GetAllBrandRequest(car.iPadService.GetAllBrandRequestBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute()]
+    public partial class GetAllBrandRequestBody {
+        
+        public GetAllBrandRequestBody() {
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class GetAllBrandResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="GetAllBrandResponse", Namespace="http://tempuri.org/", Order=0)]
+        public car.iPadService.GetAllBrandResponseBody Body;
+        
+        public GetAllBrandResponse() {
+        }
+        
+        public GetAllBrandResponse(car.iPadService.GetAllBrandResponseBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class GetAllBrandResponseBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public string GetAllBrandResult;
+        
+        public GetAllBrandResponseBody() {
+        }
+        
+        public GetAllBrandResponseBody(string GetAllBrandResult) {
+            this.GetAllBrandResult = GetAllBrandResult;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class GetAllCarsRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="GetAllCars", Namespace="http://tempuri.org/", Order=0)]
+        public car.iPadService.GetAllCarsRequestBody Body;
+        
+        public GetAllCarsRequest() {
+        }
+        
+        public GetAllCarsRequest(car.iPadService.GetAllCarsRequestBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute()]
+    public partial class GetAllCarsRequestBody {
+        
+        public GetAllCarsRequestBody() {
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class GetAllCarsResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="GetAllCarsResponse", Namespace="http://tempuri.org/", Order=0)]
+        public car.iPadService.GetAllCarsResponseBody Body;
+        
+        public GetAllCarsResponse() {
+        }
+        
+        public GetAllCarsResponse(car.iPadService.GetAllCarsResponseBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class GetAllCarsResponseBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public string GetAllCarsResult;
+        
+        public GetAllCarsResponseBody() {
+        }
+        
+        public GetAllCarsResponseBody(string GetAllCarsResult) {
+            this.GetAllCarsResult = GetAllCarsResult;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class GetGoodsByTypeIDWithPageRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="GetGoodsByTypeIDWithPage", Namespace="http://tempuri.org/", Order=0)]
+        public car.iPadService.GetGoodsByTypeIDWithPageRequestBody Body;
+        
+        public GetGoodsByTypeIDWithPageRequest() {
+        }
+        
+        public GetGoodsByTypeIDWithPageRequest(car.iPadService.GetGoodsByTypeIDWithPageRequestBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class GetGoodsByTypeIDWithPageRequestBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public string strTypeID;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=1)]
+        public string strBrand;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=2)]
+        public string strCars;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=3)]
+        public string strPages;
+        
+        public GetGoodsByTypeIDWithPageRequestBody() {
+        }
+        
+        public GetGoodsByTypeIDWithPageRequestBody(string strTypeID, string strBrand, string strCars, string strPages) {
+            this.strTypeID = strTypeID;
+            this.strBrand = strBrand;
+            this.strCars = strCars;
+            this.strPages = strPages;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class GetGoodsByTypeIDWithPageResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="GetGoodsByTypeIDWithPageResponse", Namespace="http://tempuri.org/", Order=0)]
+        public car.iPadService.GetGoodsByTypeIDWithPageResponseBody Body;
+        
+        public GetGoodsByTypeIDWithPageResponse() {
+        }
+        
+        public GetGoodsByTypeIDWithPageResponse(car.iPadService.GetGoodsByTypeIDWithPageResponseBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class GetGoodsByTypeIDWithPageResponseBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public string GetGoodsByTypeIDWithPageResult;
+        
+        public GetGoodsByTypeIDWithPageResponseBody() {
+        }
+        
+        public GetGoodsByTypeIDWithPageResponseBody(string GetGoodsByTypeIDWithPageResult) {
+            this.GetGoodsByTypeIDWithPageResult = GetGoodsByTypeIDWithPageResult;
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public interface iPadServiceSoapChannel : car.iPadService.iPadServiceSoap, System.ServiceModel.IClientChannel {
     }
@@ -970,6 +1184,46 @@ namespace car.iPadService {
             inValue.Body.strGoodsID = strGoodsID;
             car.iPadService.DeleteGoodsResponse retVal = ((car.iPadService.iPadServiceSoap)(this)).DeleteGoods(inValue);
             return retVal.Body.DeleteGoodsResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        car.iPadService.GetAllBrandResponse car.iPadService.iPadServiceSoap.GetAllBrand(car.iPadService.GetAllBrandRequest request) {
+            return base.Channel.GetAllBrand(request);
+        }
+        
+        public string GetAllBrand() {
+            car.iPadService.GetAllBrandRequest inValue = new car.iPadService.GetAllBrandRequest();
+            inValue.Body = new car.iPadService.GetAllBrandRequestBody();
+            car.iPadService.GetAllBrandResponse retVal = ((car.iPadService.iPadServiceSoap)(this)).GetAllBrand(inValue);
+            return retVal.Body.GetAllBrandResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        car.iPadService.GetAllCarsResponse car.iPadService.iPadServiceSoap.GetAllCars(car.iPadService.GetAllCarsRequest request) {
+            return base.Channel.GetAllCars(request);
+        }
+        
+        public string GetAllCars() {
+            car.iPadService.GetAllCarsRequest inValue = new car.iPadService.GetAllCarsRequest();
+            inValue.Body = new car.iPadService.GetAllCarsRequestBody();
+            car.iPadService.GetAllCarsResponse retVal = ((car.iPadService.iPadServiceSoap)(this)).GetAllCars(inValue);
+            return retVal.Body.GetAllCarsResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        car.iPadService.GetGoodsByTypeIDWithPageResponse car.iPadService.iPadServiceSoap.GetGoodsByTypeIDWithPage(car.iPadService.GetGoodsByTypeIDWithPageRequest request) {
+            return base.Channel.GetGoodsByTypeIDWithPage(request);
+        }
+        
+        public string GetGoodsByTypeIDWithPage(string strTypeID, string strBrand, string strCars, string strPages) {
+            car.iPadService.GetGoodsByTypeIDWithPageRequest inValue = new car.iPadService.GetGoodsByTypeIDWithPageRequest();
+            inValue.Body = new car.iPadService.GetGoodsByTypeIDWithPageRequestBody();
+            inValue.Body.strTypeID = strTypeID;
+            inValue.Body.strBrand = strBrand;
+            inValue.Body.strCars = strCars;
+            inValue.Body.strPages = strPages;
+            car.iPadService.GetGoodsByTypeIDWithPageResponse retVal = ((car.iPadService.iPadServiceSoap)(this)).GetGoodsByTypeIDWithPage(inValue);
+            return retVal.Body.GetGoodsByTypeIDWithPageResult;
         }
     }
 }
