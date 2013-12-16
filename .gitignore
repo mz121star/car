@@ -29,3 +29,5 @@ _NCrunch*/*
 *~
 packages/*
 .nuget/*.exe
+node_modules
+.idea
