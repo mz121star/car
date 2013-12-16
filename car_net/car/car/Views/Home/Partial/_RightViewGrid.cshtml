@@ -1,67 +1,47 @@
 ﻿@using car.DTO;
 @using System.Web.Mvc.Html;
-@using Newtonsoft.Json;
 
-<script src='@Url.Content("~/Scripts/jquery.tmpl.js")'></script>
-<script>
-    function addGoods(goodsId) {
-        if(confirm('确定要为<@(Session["plate"])>购买吗？'))
-        {
-            $.post('@Url.Action("AddGoods")',{goodsId:goodsId},function(data){
-                alert(data.MESSAGE);
-            });
-        }
-    };
-
-        function showGoods(goods,ele) {
-            $('#content').html($('#goodsTmp').tmpl(goods));
-            if (ele!=undefined) {
-                $(ele).siblings().removeClass("active").end().addClass("active");
-            }
-        }
-</script>
 @if (Model.ViewType == null)
 {<div class="row">
 
-        <div class="jumbotron">
-            <h1>欢迎光临4s店!</h1>
-            <p>
-                优势一：会战沈城，低价购车，免费报名享优惠价格！<br />
-                优势二：签到有礼，购车有机会抽取万元大奖！<br />
-                优势三：保证沈城当期购车最低价格，正规4S店全国联保！<br />
-                优势四：团购现场看车，讲解（车型+车险）无强制性消费！<br />
-                优势五：车源丰富，团购享受优先提车
-            </p>
-            <p><a href='@Url.Action("Car")' class="btn btn-success btn-lg" role="button">选择车辆</a></p>
-        </div>
+    <div class="jumbotron">
+        <h1>欢迎光临4s店!</h1>
+        <p>
+            优势一：会战沈城，低价购车，免费报名享优惠价格！<br />
+            优势二：签到有礼，购车有机会抽取万元大奖！<br />
+            优势三：保证沈城当期购车最低价格，正规4S店全国联保！<br />
+            优势四：团购现场看车，讲解（车型+车险）无强制性消费！<br />
+            优势五：车源丰富，团购享受优先提车
+        </p>
+        <p><a class="btn btn-success btn-lg" role="button">开始选购</a></p>
+    </div>
 
     </div>
 }
 else if (Model.ViewType == 1)
 {
-
+   
     <div class="row">
         @foreach (Goods item in Model.Goods)
         {
             <div class="col-sm-6 col-md-3">
-                <a href="#" class="thumbnail" data-toggle="modal" data-target="#content" onclick='showGoods({ GOODSNAME: "@item.GOODSNAME", GOODSID: "@item.GOODSID", IMAGEURL: "@item.IMAGEURL", REMARKS: "@item.REMARKS", SALEPRICE: "@item.SALEPRICE" })'>
+                <a href="#" class="thumbnail" data-toggle="modal" data-target="#myModal">
                     <img data-src="holder.js/300x200" alt="300x200" src="@item.IMAGEURL"
                          style="width: 300px; height: 200px;">
                 </a>
                 <div class="caption">
                     <h3>@item.GOODSNAME</h3>
-
                     <p>
                         价格:@item.SALEPRICE
-
-
+                    </p>
+                    <p>
                         @if (Session["Plate"] == null)
                         {
                             <a href="#" class="btn btn-primary" onclick="if(confirm('尚未选择车辆，是否跳转至选择车辆页？')) location.href='@Url.Action("Car")'; else return false;">购买</a>
                         }
                         else
                         {
-                            <a href="#" class="btn btn-primary" onclick='addGoods("@item.GOODSID"); return false;'>购买</a>
+                            <a href="#" class="btn btn-primary" onclick="return confirm('确定要为<@(Session["plate"])>购买吗？')">购买</a>
                         }
                     </p>
                 </div>
@@ -71,47 +51,44 @@ else if (Model.ViewType == 1)
     </div>
 
     <!-- Modal -->
-    <div class="modal fade" id="content" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    </div>
-    <!-- /.modal -->
-
-    <script id="goodsTmp" type="text/x-jquery-tmpl">
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                    <h4 class="modal-title" id="myModalLabel">{{= GOODSNAME}}</h4>
+                    <h4 class="modal-title" id="myModalLabel">大图预览</h4>
                 </div>
                 <div class="modal-body">
-                    <img src='{{= IMAGEURL}}' style="width: 500px; height: 400px;" />
-                    <p>价格：{{= SALEPRICE}}</p>
-                    <p>{{= REMARKS}}</p>
+                    <img src='@Url.Content("~/images/product/1.jpg")' />
+                    <p>嘉实多防冻</p>
                 </div>
                 <div class="modal-footer">
-                    @if (Session["Plate"] == null)
-{
-    <button class="btn btn-default" onclick="if(confirm('尚未选择车辆，是否跳转至选择车辆页？')) location.href='@Url.Action("Car")'; else return false;">购买</button>
-}
-                    else
-                    {
-                        <button class="btn btn-default" onclick='addGoods("{{= GOODSID}}");return false;'>购买</button>
-                    }
-                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+
                 </div>
             </div>
             <!-- /.modal-content -->
         </div>
-    </script>
+        <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal -->
 }
 else
 {
+     
+    
+    
+    
     <div class="row">
         <div class="col-md-4">
+
+
             <div class="list-group">
                 @foreach (Goods item in Model.Goods)
-{
-    <a href="#" class="list-group-item" onclick='showGoods({GOODSNAME:"@item.GOODSNAME",GOODSID:"@item.GOODSID",IMAGEURL:"@item.IMAGEURL",REMARKS:"@item.REMARKS",SALEPRICE:"@item.SALEPRICE"},this);'>@item.GOODSNAME</a>
-}
+                {
+                <a href="#" class="list-group-item">@item.GOODSNAME</a>
+                    
+                }
             </div>
 
         </div>
@@ -120,36 +97,88 @@ else
                 <div class="panel-body">
 
                     <div class="row">
-                        <div class="col-sm-12 col-md-12" id="content">
-                            
+                        <div class="col-sm-12 col-md-12">
+                            <div class="thumbnail">
+                                <img data-src="holder.js/300x200" src="http://image.cn.made-in-china.com/2f0j01SMotQUfBhhkm/%E4%B8%9C%E6%B4%8B%E8%BD%AE%E8%83%8E.jpg" alt="...">
+                                <div class="caption">
+                                    <h3>255-R65</h3>
+                                    <p>东洋轮胎 P235/60R16 400-AA-A H 100 BL Versado LX 批发价：420元/条 
+　　东洋轮胎 P235/65R16 640-A-B S 101 BW Open Country H/T 批发价：370元/条 
+　　东洋轮胎 P235/65R16 700-A-B T 103 BL Versado LX 批发价：400元/条 
+　  </p>
+                                    <p><a href="#" class="btn btn-primary" role="button">购买</a> </p>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
                 </div>
             </div>
         </div>
+        @*<table class="table table-striped table-hover">
+            <thead>
+                <tr class="success">
+                    <th>序号</th>
+                    <th>商品/服务</th>
+                    <th>单价</th>
+                    <th>数量</th>
+                    <th>金额</th>
+                    <th>购买</th>
+                </tr>
+            </thead>
+            <tbody>
+
+
+
+                @foreach (Goods item in Model.Goods)
+                {
+                    <tr>
+                        <td>1</td>
+                        <td>@item.GOODSNAME</td>
+                        <td>@item.SALEPRICE</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>
+                            <button class="btn btn-success ">
+                                @if (Session["Plate"] == null)
+                                {
+                                    <a href="#"   onclick="if(confirm('尚未选择车辆，是否跳转至选择车辆页？')) location.href='@Url.Action("Car")'; else return false;">购买</a>
+                                }
+                                else
+                                {
+                                    <a href="#"   onclick="return confirm('确定要为<@(Session["plate"])>购买吗？')">购买</a>
+                                }</button></td>
+                    </tr>
+            
+                    
+         
+                }
+            </tbody>
+        </table>*@
     </div>
 
-    <script id="goodsTmp" type="text/x-jquery-tmpl">
-        <div class="thumbnail">
-            <img style="width: 500px; height: 400px;" data-src="holder.js/300x200" src="{{= IMAGEURL}}" alt="...">
-            <div class="caption">
-                <h3>价格：{{= SALEPRICE}}</h3>
-                <p>
-                   {{= REMARKS}}
-                </p>
-                <p>
-                    @if (Session["Plate"] == null)
-                    {
-                        <a href="#" class="btn btn-primary" onclick="if(confirm('尚未选择车辆，是否跳转至选择车辆页？')) location.href='@Url.Action("Car")'; else return false;">购买</a>
-                    }
-                    else
-                    {
-                        <a href="#" class="btn btn-primary" onclick='addGoods("{{= GOODSID}}");return false;'>购买</a>
-                    }
-                </p>
-            </div>
-        </div>
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="myModalLabel">大图预览</h4>
+                </div>
+                <div class="modal-body">
+                    <img src='@Url.Content("~/images/product/1.jpg")' />
+                    <p>嘉实多防冻</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 
-    </script>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal -->
+    
+    
 }

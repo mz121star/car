@@ -28,12 +28,6 @@ namespace car
                 "Home/LoadGoods/{typeId}/{viewType}", // URL with parameters
                 new { controller = "Home", action = "LoadGoods", viewType = UrlParameter.Optional } // Parameter defaults
             );
-
-            routes.MapRoute(
-                "Car", // Route name
-                "Home/Car/{viewType}", // URL with parameters
-                new { controller = "Home", action = "Car", viewType = UrlParameter.Optional } // Parameter defaults
-            );
             
             routes.MapRoute(
                 "Default", // Route name
