@@ -9,6 +9,15 @@ using Newtonsoft.Json;
 namespace Redf.Business.WebService
 {
     /// <summary>
+    /// 20131207 yugx 
+    /// 增加方法:
+    ///          GetAllBrand(); 获取商品品牌
+    ///          GetAllCars() ; 获取商品适用车型
+    /// 修改方法:
+    ///          GetGoodsByTypeID(); 增加参数,（品牌、车型、页码）
+    ///          DownloadBill();     增加返回列，（临时价格、 销售人员）  
+    ///          AddGoods();         增加输入列，（临时价格、 销售人员）  
+    ///          
     /// Summary description for iPadService
     /// </summary>
     [WebService(Namespace = "http://tempuri.org/")]
@@ -58,6 +67,45 @@ namespace Redf.Business.WebService
             dsResult.Tables[0].Rows.Add(new object[] { "辽C98888", "E51G200F-CA44-6F7A-F9C6-10CCDDFWQ1B8" });
             return JsonConvert.SerializeObject(dsResult);
         }
+
+        /// <summary>
+        /// 取所有品牌信息
+        /// 返回结果包括：品牌名称
+        /// 备注：用于查询二级分类下商品
+        /// </summary>
+        /// <returns></returns>
+        [WebMethod]
+        public string GetAllBrand()
+        {
+            //select distinct ltrim(rtrim(BRAND)) BRAND from tri_goods
+            DataSet dsResult = new DataSet();
+            dsResult.Tables.Add("RESULT");
+            dsResult.Tables[0].Columns.Add("BRAND");
+            dsResult.Tables[0].Rows.Add(new object[] { "3M" });
+            dsResult.Tables[0].Rows.Add(new object[] { "龟牌" });
+            dsResult.Tables[0].Rows.Add(new object[] { "壳牌" });
+            return JsonConvert.SerializeObject(dsResult);
+        }
+
+        /// <summary>
+        /// 取所有车型信息
+        /// 返回结果包括：车型名称
+        /// 备注：用于查询二级分类下商品
+        /// </summary>
+        /// <returns></returns>
+        [WebMethod]
+        public string GetAllCars()
+        {
+            //select distinct ltrim(rtrim(CARS)) CARS from tri_goods
+            DataSet dsResult = new DataSet();
+            dsResult.Tables.Add("RESULT");
+            dsResult.Tables[0].Columns.Add("CARS");
+            dsResult.Tables[0].Rows.Add(new object[] { "大众" });
+            dsResult.Tables[0].Rows.Add(new object[] { "福特" });
+            dsResult.Tables[0].Rows.Add(new object[] { "奔驰" });
+            return JsonConvert.SerializeObject(dsResult);
+        }
+
         /// <summary>
         /// 获取全部商品一级分类信息
         /// 返回结果：一级分类编码（GOODSCATEGORYID）、一级分类名称（GOODSCATEGORYNAME）
@@ -114,11 +162,11 @@ namespace Redf.Business.WebService
         }
         /// <summary>
         /// 根据二级分类编码获取商品信息
-        /// 返回结果：商品编码（GOODSID）、名称（GOODSNAME）、价格（SALEPRICE）、图片地址（IMAGEURL）
+        /// 返回结果：商品编码（GOODSID）、名称（GOODSNAME）、价格（SALEPRICE）、图片地址（IMAGEURL）、备注(REMARKS)
         /// </summary>
         /// <returns></returns>
         [WebMethod]
-        public string GetGoodsByTypeID(string strTypeID)
+        public string GetGoodsByTypeID(string strTypeID, string strBrand, string strCars, string strPages)
         {
             DataSet dsResult = new DataSet();
             dsResult.Tables.Add("RESULT");
@@ -165,15 +213,21 @@ namespace Redf.Business.WebService
             }
             else if (strTypeID == "TRI_b4j5kb0nb6ebe56a")
             {
-                dsResult.Tables[0].Rows.Add(new object[] { "TRI_ac409823fd014c18", "韩泰轮胎", 350.00, "http://image.cn.made-in-china.com/2f0j01SMotQUfBhhkm/%E4%B8%9C%E6%B4%8B%E8%BD%AE%E8%83%8E.jpg", "关于商品的描述" });
-                dsResult.Tables[0].Rows.Add(new object[] { "TRI_23457d454suy06e2", "耐跑轮胎", 550.00, "http://pic1a.nipic.com/2008-10-09/200810915533125_2.jpg", "关于商品的描述" });
-                dsResult.Tables[0].Rows.Add(new object[] { "TRI_23fds0454suy06e2", "A轮胎", 550.00, "http://i3.sinaimg.cn/qc/2011/0406/U5272P33DT20110406155042.jpg", "关于商品的描述" });
-                dsResult.Tables[0].Rows.Add(new object[] { "TRI_23457d454suy06e2", "B轮胎", 550.00, "http://se.risechina.org/kjgj/UploadFiles_3299/200812/2008120910102166.jpg", "关于商品的描述" });
-                dsResult.Tables[0].Rows.Add(new object[] { "TRI_sftf7d454suy06e2", "C轮胎", 550.00, "http://www.btqcc.com/uploadfiles/product/ee3cfa192e9fc7e74ab2d8a01b76bf6a.jpg", "关于商品的描述" });
-                dsResult.Tables[0].Rows.Add(new object[] { "TRI_23457d454sfyy6e2", "D轮胎", 550.00, "http://a4.att.hudong.com/67/38/01300000196604122354384014076.jpg", "关于商品的描述" });
-                dsResult.Tables[0].Rows.Add(new object[] { "TRI_23457dfdsaq06we2", "E轮胎", 550.00, "http://pic3.nipic.com/20090508/2232422_085944008_2.jpg", "关于商品的描述" });
-                dsResult.Tables[0].Rows.Add(new object[] { "TRI_23457d454sufsa35", "F轮胎", 550.00, "http://image.zcool.com.cn/35/25/m_1247455340221.jpg", "关于商品的描述" });
-                dsResult.Tables[0].Rows.Add(new object[] { "TRI_2345ffds4587ssfw", "G轮胎", 550.00, "http://www.iconpng.com/png/desktop-icons/wheel.png", "关于商品的描述" });
+                if (strPages == "1")
+                {
+                    dsResult.Tables[0].Rows.Add(new object[] { "TRI_ac409823fd014c18", "韩泰轮胎", 350.00, "http://image.cn.made-in-china.com/2f0j01SMotQUfBhhkm/%E4%B8%9C%E6%B4%8B%E8%BD%AE%E8%83%8E.jpg", "关于商品的描述" });
+                    dsResult.Tables[0].Rows.Add(new object[] { "TRI_23457d454suy06e2", "耐跑轮胎", 550.00, "http://pic1a.nipic.com/2008-10-09/200810915533125_2.jpg", "关于商品的描述" });
+                    dsResult.Tables[0].Rows.Add(new object[] { "TRI_23fds0454suy06e2", "A轮胎", 550.00, "http://i3.sinaimg.cn/qc/2011/0406/U5272P33DT20110406155042.jpg", "关于商品的描述" });
+                    dsResult.Tables[0].Rows.Add(new object[] { "TRI_23457d454suy06e2", "B轮胎", 550.00, "http://se.risechina.org/kjgj/UploadFiles_3299/200812/2008120910102166.jpg", "关于商品的描述" });
+                    dsResult.Tables[0].Rows.Add(new object[] { "TRI_sftf7d454suy06e2", "C轮胎", 550.00, "http://www.btqcc.com/uploadfiles/product/ee3cfa192e9fc7e74ab2d8a01b76bf6a.jpg", "关于商品的描述" });
+                }
+                else if (strPages == "2")
+                {
+                    dsResult.Tables[0].Rows.Add(new object[] { "TRI_23457d454sfyy6e2", "D轮胎", 550.00, "http://a4.att.hudong.com/67/38/01300000196604122354384014076.jpg", "关于商品的描述" });
+                    dsResult.Tables[0].Rows.Add(new object[] { "TRI_23457dfdsaq06we2", "E轮胎", 550.00, "http://pic3.nipic.com/20090508/2232422_085944008_2.jpg", "关于商品的描述" });
+                    dsResult.Tables[0].Rows.Add(new object[] { "TRI_23457d454sufsa35", "F轮胎", 550.00, "http://image.zcool.com.cn/35/25/m_1247455340221.jpg", "关于商品的描述" });
+                    dsResult.Tables[0].Rows.Add(new object[] { "TRI_2345ffds4587ssfw", "G轮胎", 550.00, "http://www.iconpng.com/png/desktop-icons/wheel.png", "关于商品的描述" });
+                }
             }
 
             return JsonConvert.SerializeObject(dsResult);
@@ -312,11 +366,13 @@ namespace Redf.Business.WebService
         /// <summary>
         /// 获取账单明细
         /// 一个字符串参数：单据编码
-        /// 返回Json字符串：商品编码(GOODSID)、价格（SALEPRICE）、数量（SUMNUMBER）、备注（REMARKS）;
+        /// 返回Json字符串：商品编码(GOODSID)、价格（SALEPRICE）、临时价格（TEMPSALEPRICE）、数量（SUMNUMBER）、销售人员(SALESMAN)、备注（REMARKS）;
         /// 
         /// 参数示例字符串：E512E00F-CA44-6F7A-F9C6-10CCDDB92BB8
         /// 返回示例字符串：{"DETAIL":[{"GOODSID":"TRI_74fb6869be042b80","SUMNUMBER":"1.00","REMARKS":"无"}]}
         /// 备注：如果返回数据为空说明当前车牌照对应单据已结账，或还没有新增商品
+        /// 
+        /// 20131207增加字段:临时价格（TEMPSALEPRICE）、销售人员(SALESMAN)
         /// </summary>
         /// <returns></returns>
         [WebMethod]
@@ -327,7 +383,9 @@ namespace Redf.Business.WebService
             dsBill.Tables[0].Columns.Add("GOODSID");
             dsBill.Tables[0].Columns.Add("GOODSNAME");
             dsBill.Tables[0].Columns.Add("SALEPRICE");
+            dsBill.Tables[0].Columns.Add("TEMPSALEPRICE");
             dsBill.Tables[0].Columns.Add("SUMNUMBER");
+            dsBill.Tables[0].Columns.Add("SALESMAN");
             dsBill.Tables[0].Columns.Add("REMARKS");
             dsBill.Tables[0].Rows.Add(new object[] { "TRI_23fds0454suy06e2", "A轮胎", "550", "2", "无" });
             dsBill.Tables[0].Rows.Add(new object[] { "TRI_23457d454suy06e2", "B轮胎", "550", "1", "无" });
@@ -336,20 +394,23 @@ namespace Redf.Business.WebService
             dsBill.Tables[0].Rows.Add(new object[] { "TRI_23457dfdsaq06we2", "E轮胎", "550", "4", "无" });
             dsBill.Tables[0].Rows.Add(new object[] { "TRI_23457d454sufsa35", "F轮胎", "550", "6", "无" });
             dsBill.Tables[0].Rows.Add(new object[] { "TRI_2345ffds4587ssfw", "G轮胎", "550", "1", "无" });
-            
-            
+
+
             return JsonConvert.SerializeObject(dsBill);
         }
 
         /// <summary>
         /// 增加商品
-        /// 参数Json字符串：单据编码(SALESID)、商品编码(GOODSID)、数量（SUMNUMBER）、备注（REMARKS）;
+        /// 参数Json字符串：单据编码(SALESID)、商品编码(GOODSID)、临时价格（TEMPSALEPRICE）、数量（SUMNUMBER）、销售人员(SALESMAN)、备注（REMARKS）;
         /// 返回Json字符串：返回结果：是否成功（ISSUCCESS：1表示成功、0表示失败）、详细信息（MESSAGE：用详细语言描述，包括：已经结账了等等）
         /// 
-        /// 参数示例字符串：{"DETAIL":[{"SALESID":"E512E00F-CA44-6F7A-F9C6-10CCDDB92BB8","GOODSID":"TRI_74fb6869be042b80","SUMNUMBER":"1.00","REMARKS":"无"}]}
+        /// 参数示例字符串：{"DETAIL":[{"SALESID":"E512E00F-CA44-6F7A-F9C6-10CCDDB92BB8","GOODSID":"TRI_74fb6869be042b80","TEMPSALEPRICE":"180.99","SUMNUMBER":"1.00","SALESMAN":"Tom","REMARKS":"无"}]}
         /// 返回示例字符串：{"RESULT":[{"ISSUCCESS":"1","MESSAGE":"保存成功"}]}
         /// 备注：如果返回数据为空说明当前车牌照对应单据已结账，或还没有新增商品
         /// </summary>
+        /// 
+        /// /// 20131207增加字段:临时价格（TEMPSALEPRICE）、销售人员(SALESMAN)
+        /// 
         /// <returns></returns>
         [WebMethod]
         public string AddGoods(string strSalesID)
@@ -358,9 +419,11 @@ namespace Redf.Business.WebService
             //dsBill.Tables.Add("DETAIL");
             //dsBill.Tables[0].Columns.Add("SALESID");
             //dsBill.Tables[0].Columns.Add("GOODSID");
+            //dsBill.Tables[0].Columns.Add("TEMPSALEPRICE");
             //dsBill.Tables[0].Columns.Add("SUMNUMBER");
+            //dsBill.Tables[0].Columns.Add("SALESMAN");
             //dsBill.Tables[0].Columns.Add("REMARKS");
-            //dsBill.Tables[0].Rows.Add(new object[] { "E512E00F-CA44-6F7A-F9C6-10CCDDB92BB8","TRI_74fb6869be042b80", "1.00", "无" });
+            //dsBill.Tables[0].Rows.Add(new object[] { "E512E00F-CA44-6F7A-F9C6-10CCDDB92BB8", "TRI_74fb6869be042b80", "180.99", "1.00", "Tom", "无" });
             //return JsonConvert.SerializeObject(dsBill);
 
             DataSet dsResult = new DataSet();
