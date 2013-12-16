@@ -1,5 +1,4 @@
-Redf.Business.WebService为webservice项目，
-car为web项目
+IpadCar
+=======
 
-已完成登录的调用
- 
+IpadCar
