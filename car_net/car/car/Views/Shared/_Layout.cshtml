@@ -25,26 +25,13 @@
     <!-- <script src="../../assets/js/html5shiv.js"></script>
      <script src="../../assets/js/respond.min.js"></script>-->
     <!--[endif]-->
-    <script>
-        $(function () {
-            var navH = $("#container").offset().top;
-            $(window).on("scroll", (function () {
-                var scroH = $(this).scrollTop();
-                if (scroH > navH) {
-                    $("#container").css({ "position": "fixed", width: "100%", "top": "0" });
-                } else {
-                    $("#container").css({ "position": "relative", "margin-bottom": "20px" });
-                }
-            }));
-        });
-    </script>
 </head>
 
 <body>
 
     <!-- Static navbar -->
 
-    <div class="navbar navbar-default navbar-static-top" id="container">
+    <div class="navbar navbar-default navbar-static-top">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -56,8 +43,10 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul id="nav" class="nav navbar-nav">
-                    <li class="active"><a href='@Url.Action("Index", new { viewType = Html.ViewContext.RouteData.Values["viewType"] })'><i class="fa fa-pinterest-square"></i>首页</a></li>
-                    <li id="addcar"><a href="@Url.Action("Car")"><i class="fa fa-plus-square-o"></i>添加车辆</a></li>
+                    <li class="active"><a href="@Url.Action("Index")">首页</a></li>
+                    <li id="addcar"><a href="@Url.Action("Car")">添加车辆</a></li>
+                    <li><a href="#contact">我的账单</a></li>
+                     
                 </ul>
 
                 <ul class="nav navbar-nav navbar-right">

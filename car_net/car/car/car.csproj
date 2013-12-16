@@ -191,6 +191,11 @@
     <Content Include="bootstrap\fonts\glyphicons-halflings-regular.eot" />
     <Content Include="bootstrap\fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="bootstrap\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\fontawesome-webfont.eot" />
+    <Content Include="fonts\fontawesome-webfont.svg" />
+    <Content Include="fonts\fontawesome-webfont.ttf" />
+    <Content Include="fonts\fontawesome-webfont.woff" />
+    <Content Include="fonts\FontAwesome.otf" />
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
     <Content Include="images\admin_bg.png" />
     <Content Include="images\admin_bg1.png" />
@@ -203,10 +208,7 @@
     <Content Include="images\images\car_03.png" />
     <Content Include="images\images\car_04.gif" />
     <Content Include="images\images\car_05.gif" />
-    <Content Include="images\mnu1_bg.png" />
     <Content Include="images\product\1.jpg" />
-    <Content Include="images\win1.png" />
-    <Content Include="images\win2.png" />
     <Content Include="readme.txt" />
     <Content Include="Scripts\angular.min.js" />
     <Content Include="Scripts\jquery-1.7.1.js" />
@@ -216,10 +218,8 @@
     <Content Include="Scripts\jquery-1.8.2.min.js" />
     <Content Include="Scripts\jquery-ui-1.8.20.js" />
     <Content Include="Scripts\jquery-ui-1.8.20.min.js" />
-    <Content Include="Scripts\jquery.tmpl.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
-    <Content Include="Scripts\jquery1.10.js" />
     <Content Include="Scripts\modernizr-2.5.3.js" />
     <None Include="Service References\iPadService\ipadService.wsdl" />
     <None Include="Views\Home\Car.cshtml" />

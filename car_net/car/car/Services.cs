@@ -85,21 +85,5 @@ namespace car
             var message = service.AddGoods(JsonConvert.SerializeObject(goodsDetailList));
             return JsonConvert.DeserializeObject<MessageList>(message).RESULT.FirstOrDefault();
         }
-
-        public GoodsList GetGoodsByTypeIDWithPage(string strTypeID, string strBrand, string strCars, string strPages)
-        {
-            var list = service.GetGoodsByTypeIDWithPage(strTypeID, strBrand, strCars, strPages);
-            return JsonConvert.DeserializeObject<GoodsList>(list);
-        }
-
-        public BrandList GetAllBrand()
-        {
-            return JsonConvert.DeserializeObject<BrandList>(service.GetAllBrand());
-        }
-
-        public CarsList GetAllCars()
-        {
-            return JsonConvert.DeserializeObject<CarsList>(service.GetAllCars());
-        }
     }
 }
